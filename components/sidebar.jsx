@@ -1,20 +1,25 @@
 import styled from 'styled-components'
 
 const SidebarContainer = styled.div`
-   align-items: flex-end;
    box-sizing: border-box;
    display: flex;
    flex-direction: column;
    font-family: Quicksand, sans-serif;
    font-weight: 500;
-   height: 100vh;
-   padding: 120px 12px 12px;
+   height: max-content;
+   max-width: 120px;
+   padding: 12px 24px 12px;
+   position: sticky;
+   top: 50px;
+   align-items: flex-end;
+   justify-content: start;
 
    span {
       padding: 2px 6px;
       background: #f8f8fa;
       border-radius: 4px;
       margin: 0 0 12px 12px;
+      font-size: 18px;
    }
 
    .spacer {
@@ -22,19 +27,18 @@ const SidebarContainer = styled.div`
    }
 
    .social-links {
+      margin-top: 12px;
       display: flex;
       flex-direction: column;
 
       img {
          margin-bottom: 12px;
-         filter: brightness(1.4);
       }
 
       .avatar {
          img {
-            width: 28px;
+            width: 24px;
             border-radius: 100px;
-            filter: brightness(1.2);
 
             &:hover {
                width: 200px;
@@ -42,6 +46,10 @@ const SidebarContainer = styled.div`
                bottom: 0;
                left: 12px;
             }
+         }
+
+         span {
+            display: none;
          }
       }
    }
@@ -53,11 +61,9 @@ const Sidebar = () => {
    return (
       <SidebarContainer>
          <span>about</span>
-         <span>projects</span>
-         <span>design</span>
-         <span>video</span>
+         <span>work</span>
          <span>resume</span>
-         <div className="spacer" />
+         {/* <div className="spacer" /> */}
          <div className="social-links">
             <a href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
                <img src="/static/icons/github.svg" alt="github-icon" />

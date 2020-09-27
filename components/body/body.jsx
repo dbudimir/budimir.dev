@@ -11,20 +11,15 @@ const BodyContainer = styled.div`
    h1,
    p,
    .tags {
-      max-width: 540px;
+      max-width: 580px;
    }
 `
 
-const Body = () => {
-   console.log('test')
-
-   return (
-      <BodyContainer>
-         <h1>David Budimir</h1>
-         <About />
-         <Projects />
-      </BodyContainer>
-   )
-}
+const Body = () => (
+   <BodyContainer>
+      {/* <About /> */}
+      <Projects />
+   </BodyContainer>
+)
 
 export default Body
