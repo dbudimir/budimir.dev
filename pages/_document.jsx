@@ -34,14 +34,8 @@ export default class _document extends Document {
             <Head>
                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143779551-1" />
 
-               <script
-                  dangerouslySetInnerHTML={{
-                     __html: ` window.dataLayer = window.dataLayer || [] function gtag() { dataLayer.push(arguments) } gtag('js', new Date()) gtag('config', 'UA-143779551-1') `,
-                  }}
-               />
-
                <meta charSet="UTF-8" />
-               <meta name="google-site-verification" content="VhlIZU1D7S2fGIH5Wzv2Uo_QdYwK69OuoP120eINMik" />
+               <meta name="google-site-verification" content="W6Q3AE1kbGUlzyt_wRbCvr13gcfXqympu7hV91DbHWM" />
                <link
                   rel="stylesheet"
                   href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -54,8 +48,7 @@ export default class _document extends Document {
                   as="font"
                   crossOrigin=""
                />
-               <link rel="icon" href="/static/images/emoji-favicon.png" />
-               <meta name="google-site-verification" content="0tikEBJv6jfDzlVrMSFJmAOFrQCMM0c47FLBfIyeck4" />
+               <link rel="icon" href="/static/icons/favicon.png" />
             </Head>
             <body style={{ margin: 0 }}>
                <Main />

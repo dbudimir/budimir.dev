@@ -7,18 +7,13 @@ import Projects from './projects'
 const BodyContainer = styled.div`
    padding: 12px;
    font-family: Quicksand, sans-serif;
-
-   h1,
-   p,
-   .tags {
-      max-width: 580px;
-   }
+   max-width: 96%;
+   scroll-behavior: smooth;
 `
 
-const Body = () => (
+const Body = ({ showHeader }) => (
    <BodyContainer>
-      {/* <About /> */}
-      <Projects />
+      <Projects showHeader={showHeader} />
    </BodyContainer>
 )
 
