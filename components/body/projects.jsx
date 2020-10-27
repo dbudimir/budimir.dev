@@ -1,5 +1,6 @@
 // Utils
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import YouTube from 'react-youtube'
 import styled from 'styled-components'
 import data from '../../data/projects'
@@ -318,11 +319,14 @@ const Projects = ({ showHeader }) => {
                            }
                            {
                               // All images
-                              images.map((image) => (
-                                 <div className="video-image-container" key={image.alt}>
-                                    <img src={image.src} alt={image.alt} />
-                                 </div>
-                              ))
+                              images.map((image) => {
+                                 console.log(image.src)
+                                 return (
+                                    <div className="video-image-container" key={image.alt}>
+                                       <Image src={image.src} alt={image.alt} unsized />
+                                    </div>
+                                 )
+                              })
                            }
                         </div>
                      </div>

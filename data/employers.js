@@ -1,7 +1,7 @@
 export const employers = {
    sanity: {
       company: 'Sanity.io',
-      role: 'Marketing Front End Developer',
+      role: 'Marketing Frontend Developer',
       logo: { src: '/static/images/logos/sanity-logo.png', alt: 'Sanity logo' },
    },
    crossbeam: {
