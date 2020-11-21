@@ -14,6 +14,23 @@ export const projects = [
       links: [{ linkText: 'squad.lol', url: 'https://squad.lol/' }],
    },
    {
+      h3: 'Queen Ballers',
+      videoId: null,
+      images: [
+         { src: '/static/images/queen-ballers.png', alt: 'Queen ballers website thumbnail' },
+         { src: '/static/images/qb-mobile-thumb.png', alt: 'Queen ballers mobile thumbnail' },
+      ],
+      description: [
+         "Queen Ballers provides in depth women's basketball coverage, player highlights, & drills for athletes.",
+         'This site is a headless wordpress project where each url is generated as a static page for optimal load times. ',
+      ],
+      tags: ['react', 'nextjs', 'mongodb', 'headless wp', 'cheerio'],
+      links: [
+         { linkText: 'queenballers.club', url: 'https://queenballers.club/' },
+         { linkText: 'open repo', url: 'https://github.com/dbudimir/queen-ballers' },
+      ],
+   },
+   {
       h3: 'Vodium',
       videoId: 'qW8KuYBWwCU',
       images: [

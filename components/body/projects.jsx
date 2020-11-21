@@ -78,8 +78,9 @@ const ProjectContainer = styled.div`
                   img,
                   video,
                   iframe {
-                     transform: scale(1.005);
+                     transform: scale(1.01);
                      height: 240px;
+                     object-fit: scale-down;
 
                      @media screen and (max-width: 768px) {
                         height: 180px;
@@ -323,7 +324,7 @@ const Projects = ({ showHeader }) => {
                                  console.log(image.src)
                                  return (
                                     <div className="video-image-container" key={image.alt}>
-                                       <Image src={image.src} alt={image.alt} unsized />
+                                       <img src={image.src} alt={image.alt} />
                                     </div>
                                  )
                               })
