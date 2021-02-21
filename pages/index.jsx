@@ -178,6 +178,7 @@ const IndexContainer = styled.div`
 
          .resume-button {
             display: flex;
+            min-width: 120px;
          }
 
          &.show {
@@ -232,13 +233,9 @@ const Index = (props) => {
    const { company } = props
    const [showHeader, setShowHeader] = useState(false)
 
-   const handleScroll = () => {
-      window.pageYOffset > 250 ? setShowHeader(true) : setShowHeader(false)
-   }
-
    useEffect(() => {
       TagManager.initialize(tagManagerArgs)
-      window.addEventListener('scroll', handleScroll, { passive: true })
+      window.addEventListener('scroll', () => setShowHeader(window.pageYOffset > 250), { passive: true })
    }, [])
 
    return (

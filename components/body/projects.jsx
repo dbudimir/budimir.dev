@@ -47,6 +47,8 @@ const ProjectContainer = styled.div`
       padding-bottom: 12px;
       margin-bottom: 32px;
       border-bottom: 1px solid #eeeef1;
+      position: relative;
+      overflow: hidden;
 
       h3 {
          text-transform: uppercase;
@@ -57,58 +59,60 @@ const ProjectContainer = styled.div`
          position: relative;
          box-shadow: inset rgb(0 0 0 / 11%) -2px 0px 12px 0px;
          border-radius: 12px;
-         overflow: hidden;
+         max-width: 100%;
+         width: 580px;
+         overflow: scroll;
 
-         .image-outer {
-            max-width: 100%;
-            width: 580px;
-            overflow: auto;
+         .image-slider {
+            display: inline-flex;
+            padding: 12px;
 
-            .image-slider {
-               display: inline-flex;
-               padding: 12px;
+            .video-image-container {
+               margin-right: 18px;
+               box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15);
+               border-radius: 12px;
+               overflow: hidden;
+               width: max-content;
+               display: flex;
+               align-items: center;
 
-               .video-image-container {
-                  margin-right: 18px;
-                  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15);
-                  border-radius: 12px;
-                  overflow: hidden;
-                  display: flex;
+               img {
+                  transform: scaleY(1.02) scaleX(1.01);
+               }
 
-                  img,
-                  video,
-                  iframe {
-                     transform: scale(1.01);
-                     height: 240px;
-                     object-fit: scale-down;
+               video,
+               iframe {
+                  transform: scale(1.01);
+                  height: 240px;
+                  object-fit: scale-down;
 
-                     @media screen and (max-width: 768px) {
-                        height: 180px;
-                     }
+                  @media screen and (max-width: 768px) {
+                     height: 180px;
                   }
+               }
 
-                  iframe {
-                     @media screen and (max-width: 768px) {
-                        max-width: 300px;
-                     }
+               iframe {
+                  @media screen and (max-width: 768px) {
+                     max-width: 300px;
                   }
                }
             }
          }
+      }
 
-         .fade {
-            background: #ffffff;
-            bottom: 0px;
-            box-shadow: rgb(0 0 0 / 44%) -4px 0px 17px 0px;
-            height: 242px;
-            margin: 12px 0px;
-            position: absolute;
-            right: -4px;
-            width: 4px;
+      .fade {
+         background: #ffffff;
+         top: 42px;
+         box-shadow: rgb(0 0 0 / 44%) -4px 0px 17px 0px;
+         height: 242px;
+         margin: 12px 0px;
+         position: absolute;
+         right: -4px;
+         width: 4px;
+         z-index: 10;
 
-            @media screen and (max-width: 768px) {
-               height: 180px;
-            }
+         @media screen and (max-width: 768px) {
+            height: 180px;
          }
       }
    }
@@ -207,8 +211,6 @@ const Projects = ({ showHeader }) => {
    const jobsList = useRef(null)
 
    const mouseOver = (e, ref) => {
-      console.log(window.innerWidth)
-
       e.stopPropagation()
 
       const elm = ref.current
@@ -233,134 +235,112 @@ const Projects = ({ showHeader }) => {
          )
    }
 
-   const mouseLeave = (e, ref) => { ref.current.setAttribute('style', '') } // prettier-ignore
-
-   const activeArea = () => {
-      // console.log(window.pageYOffset > workList.current.offsetTop)
-
-      window.pageYOffset > workList.current.offsetTop && window.pageYOffset < jobsList.current.offsetTop
-         ? workButton.current.classList.add('active')
-         : workButton.current.classList.remove('active')
-      //
-
-      window.pageYOffset > jobsList.current.offsetTop
-         ? jobButton.current.classList.add('active')
-         : jobButton.current.classList.remove('active')
-   }
-
    useEffect(() => {
-      window.addEventListener('scroll', activeArea, { passive: true })
+      window.addEventListener(
+         'scroll',
+         () => {
+            const options = [workButton, jobButton].map((button) => {
+               button.current.classList.contains('active') && button.current.classList.remove('active')
+
+               return button
+            })
+            // //
+            const activeOption = window.pageYOffset > jobsList.current.offsetTop ? options[1] : options[0]
+            activeOption.current.classList.add('active')
+         },
+         { passive: true }
+      )
    }, [])
 
    return (
       <ProjectContainer>
          <div className={`nav ${showHeader && 'show'}`}>
-            <a
-               className="work-button"
-               href="/#work"
-               ref={workButton}
-               onMouseMove={(e) => mouseOver(e, workButton)}
-               onMouseLeave={(e) => mouseLeave(e, workButton)}
-            >
-               Work Samples
-            </a>
-            <a
-               className="job-history-button"
-               href="/#jobs"
-               ref={jobButton}
-               onMouseMove={(e) => mouseOver(e, jobButton)}
-               onMouseLeave={(e) => mouseLeave(e, jobButton)}
-            >
-               Professional History
-            </a>
-            <a
-               className="resume-button"
-               href="../static/pdfs/david-budimir-resume.pdf"
-               target="_blank"
-               ref={resumeButton}
-               onMouseMove={(e) => mouseOver(e, resumeButton)}
-               onMouseLeave={(e) => mouseLeave(e, resumeButton)}
-            >
-               View Resume
-               <img src="../static/icons/pdf-icon.png" alt="View resume" />
-            </a>
+            {[
+               { text: 'Work Samples', className: 'work-button', href: '/#work', target: null, ref: workButton, icon: null }, // prettier-ignore
+               { text: 'Professional History', className: 'job-history-button', href: '/#jobs', target: null, ref: jobButton, icon: null }, // prettier-ignore
+               { text: 'View Resume', className: 'resume-button', href: '../static/pdfs/david-budimir-resume.pdf', target: '_blank', ref: resumeButton, icon: <img src="../static/icons/pdf-icon.png" alt="View resume" /> }, // prettier-ignore
+            ].map(({ text, icon, className, href, target, ref }, index) => (
+               <a
+                  key={index}
+                  className={className}
+                  href={href}
+                  ref={ref}
+                  target={target}
+                  onMouseMove={(e) => mouseOver(e, ref)}
+                  onMouseLeave={() => ref.current.setAttribute('style', '')}
+               >
+                  {text}
+                  {icon}
+               </a>
+            ))}
          </div>
          <div className="work-history" id="work" ref={workList}>
             <h2>Work Samples</h2>
          </div>
-         {data.map((project) => {
-            const { h3, videoId, images, description, tags, links } = project
-
-            return (
-               <div className="project-item" key={h3}>
-                  <h3>{h3}</h3>
-                  <div className="outer-container">
-                     <div className="image-outer">
-                        <div className="image-slider">
-                           {
-                              // MP4 video type
-                              videoId === 'squad' && (
-                                 <div className="video-image-container">
-                                    <video autoPlay loop muted playsInline>
-                                       <source src="../../static/images/squad-mini-demo.mp4" type="video/mp4" />
-                                    </video>
-                                 </div>
-                              )
-                           }
-                           {
-                              // Video if we have it
-                              videoId && videoId !== 'squad' && (
-                                 <YouTube
-                                    videoId={videoId}
-                                    className="video"
-                                    containerClassName="video-image-container"
-                                    opts={{ height: '240', width: '420', playerVars: { autoplay: 0, showinfo: 0 } }}
-                                 />
-                              )
-                           }
-                           {
-                              // All images
-                              images.map((image) => {
-                                 console.log(image.src)
-                                 return (
-                                    <div className="video-image-container" key={image.alt}>
-                                       <img src={image.src} alt={image.alt} />
-                                    </div>
-                                 )
-                              })
-                           }
-                        </div>
-                     </div>
-                     <div className="fade" />
-                  </div>
-                  {
-                     // Description
-                     description.map((line, index) => (
-                        <p key={index}>{line}</p>
-                     ))
-                  }
-                  <div className="tags">
+         {data.map(({ h3, videoId, images, description, tags, links }) => (
+            <div className="project-item" key={h3}>
+               <div className="fade" />
+               <h3>{h3}</h3>
+               <div className="outer-container">
+                  <div className="image-slider">
                      {
-                        // Tags
-                        tags.map((tag, index) => (
-                           <span key={index}>{tag}</span>
+                        // MP4 video type
+                        videoId === 'squad' && (
+                           <div className="video-image-container">
+                              <video autoPlay loop muted playsInline preload="auto">
+                                 <source src="../../static/images/squad-mini-demo.mp4" type="video/mp4" />
+                              </video>
+                           </div>
+                        )
+                     }
+                     {
+                        // Video if we have it
+                        videoId && videoId !== 'squad' && (
+                           <YouTube
+                              videoId={videoId}
+                              className="video"
+                              containerClassName="video-image-container"
+                              opts={{ height: '240', width: '420', playerVars: { autoplay: 0, showinfo: 0 } }}
+                           />
+                        )
+                     }
+                     {
+                        // All images
+                        images.map((image) => (
+                           <div className="video-image-container" key={image.alt}>
+                              <Image src={image.src} alt={image.alt} height={image.height} width={image.width} />
+                           </div>
                         ))
                      }
                   </div>
+               </div>
+               {
+                  // Description
+                  description.map((line, index) => (
+                     <p key={index}>{line}</p>
+                  ))
+               }
+               <div className="tags">
                   {
-                     // Links
-                     links.map((link, index) => (
-                        <div className="link" key={index}>
-                           <a href={link.url} target="_blank" rel="noreferrer">
-                              {link.linkText}
-                           </a>
-                           <LinkIcon />
-                        </div>
+                     // Tags
+                     tags.map((tag, index) => (
+                        <span key={index}>{tag}</span>
                      ))
                   }
                </div>
-            )
-         })}
+               {
+                  // Links
+                  links.map((link, index) => (
+                     <div className="link" key={index}>
+                        <a href={link.url} target="_blank" rel="noreferrer">
+                           {link.linkText}
+                        </a>
+                        <LinkIcon />
+                     </div>
+                  ))
+               }
+            </div>
+         ))}
          <div className="work-history job-history" id="jobs" ref={jobsList}>
             <h2>Professional History</h2>
          </div>

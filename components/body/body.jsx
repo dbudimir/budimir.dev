@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 // Components
-import About from './about'
 import Projects from './projects'
 
 const BodyContainer = styled.div`
