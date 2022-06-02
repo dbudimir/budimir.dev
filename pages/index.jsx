@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import TagManager from 'react-gtm-module'
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
@@ -281,8 +282,8 @@ const Index = (props) => {
             <h1>David Budimir</h1>
             <div>
                <span>// developer </span>
-               <span> // designer</span>
-               <span> // marketing swiss-army-knife</span>
+               <span>// designer</span>
+               <span>// marketing swiss-army-knife</span>
             </div>
          </div>
          <div className="layout">

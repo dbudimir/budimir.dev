@@ -4,7 +4,7 @@ import Image from 'next/image'
 import YouTube from 'react-youtube'
 import styled from 'styled-components'
 import data from '../../data/projects'
-import jobs from '../../data/jobs'
+import { jobs } from '../../data/jobs'
 
 // Components
 import LinkIcon from '../icons/link'
