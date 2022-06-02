@@ -6,8 +6,8 @@ export const jobs = [
       dates: '04.2021 – Present',
       desc: "As a full-stack engineer at Till, I worked primarily on building and maintaining Till's web application. Specifically I was responsible to migrate a legacy React code-base to a simplified Vue.js stack, and to continue to simplify and optimize the application sign-up process.",
       link: {
-         linkText: 'everfi.com',
-         url: 'https://everfi.com/',
+         linkText: 'hellotill.com',
+         url: 'https://hellotill.com/',
       },
    },
    {

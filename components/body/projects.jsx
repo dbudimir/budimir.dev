@@ -297,12 +297,13 @@ const Projects = ({ showHeader }) => {
                      {
                         // Video if we have it
                         videoId && videoId !== 'squad' && (
-                           <YouTube
-                              videoId={videoId}
-                              className="video"
-                              containerClassName="video-image-container"
-                              opts={{ height: '240', width: '420', playerVars: { autoplay: 0, showinfo: 0 } }}
-                           />
+                           <div className="video-image-container">
+                              <YouTube
+                                 videoId={videoId}
+                                 className="video"
+                                 opts={{ height: '240', width: '420', playerVars: { autoplay: 0, showinfo: 0 } }}
+                              />
+                           </div>
                         )
                      }
                      {
