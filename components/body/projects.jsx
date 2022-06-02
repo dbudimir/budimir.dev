@@ -179,6 +179,7 @@ const ProjectContainer = styled.div`
          display: flex;
          flex-direction: column;
          margin-bottom: 18px;
+         align-items: flex-end;
       }
 
       h3 {

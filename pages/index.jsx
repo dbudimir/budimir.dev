@@ -24,7 +24,7 @@ const IndexContainer = styled.div`
       font-weight: 700;
       justify-content: space-between;
       padding: 5px 12px 4px;
-      z-index: 2;
+      z-index: 999;
       align-items: center;
       top: 0px;
       transition: transform 0.5s ease-in-out;

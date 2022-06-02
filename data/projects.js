@@ -24,7 +24,7 @@ export const projects = [
       tags: ['react', 'nextjs', 'mongodb', 'headless wp', 'cheerio'],
       links: [
          { linkText: 'queenballers.club', url: 'https://queenballers.club/' },
-         { linkText: 'open repo', url: 'https://github.com/dbudimir/queen-ballers' },
+         // { linkText: 'open repo', url: 'https://github.com/dbudimir/queen-ballers' },
       ],
    },
    {
