@@ -28,6 +28,16 @@ export const projects = [
       ],
    },
    {
+      h3: 'Greywing',
+      videoId: 'greywing',
+      images: [{ src: '/static/images/grey-wing-marketing.png', alt: 'Greywing website thumbnail', height: 242, width: 446 }],
+      description: [
+         'I worked with Greywing to build out the initial version of their cargo ship fleet management platform, and their marketing website.',
+      ],
+      tags: ['react', 'nextjs', 'leaflet', 'mapbox studio', 'google maps api', ],
+      links: [{ linkText: 'grey-wing.com', url: 'https://grey-wing.com/' }],
+   },
+   {
       h3: 'Vodium',
       videoId: 'qW8KuYBWwCU',
       images: [

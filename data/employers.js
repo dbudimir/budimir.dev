@@ -21,8 +21,13 @@ export const employers = {
    },
    maxar: {
       company: 'Maxar',
-      role: 'Front-End Software Engineer',
+      role: 'Frontend Engineer',
       logo: { src: '/static/images/logos/maxar-logo.png', alt: 'Maxar logo' },
+   },
+   stripe: {
+      company: 'Stripe',
+      role: 'Frontend Engineer',
+      logo: { src: '/static/images/logos/stripe-logo.png', alt: 'Stripe logo' },
    },
 }
 

@@ -4,11 +4,11 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 const SidebarContainer = styled.div`
+   z-index: 20;
    bottom: 0;
    box-sizing: border-box;
    display: flex;
    flex-direction: row;
-   font-family: Quicksand, sans-serif;
    font-weight: 500;
    height: 40px;
    height: max-content;
@@ -153,9 +153,9 @@ const Sidebar = () => {
             <a href="https://www.linkedin.com/in/davidbudimir/" target="_blank" rel="noopener noreferrer">
                <img src="/static/icons/linkedin.svg" alt="linkedin-icon" />
             </a>
-            <a href="https://www.instagram.com/dbudi/" target="_blank" rel="noopener noreferrer">
+            {/* <a href="https://www.instagram.com/dbudi/" target="_blank" rel="noopener noreferrer">
                <img src="/static/icons/instagram.svg" alt="instagram-icon" />
-            </a>
+            </a> */}
             <div className="avatar" onClick={(e) => showMe(e)}>
                <img src="/static/images/profile-pic.jpg" alt="David Budimir" />
                <span>this is what I look like</span>

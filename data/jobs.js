@@ -1,6 +1,7 @@
 export const jobs = [
    {
       company: 'Till',
+      companySubTitle: '(acquired by Best Egg)',
       role: 'Software Engineer',
       location: 'Washington, D.C. // Remote',
       dates: '04.2021 – Present',
@@ -15,7 +16,7 @@ export const jobs = [
       role: 'Director of Web Operations ',
       location: 'Washington, D.C.',
       dates: '09.2019 – 03.2020',
-      desc: 'Managed a team of internal Wordpress developers and our web-agency relationship with the primary goal of optimizing EVERFI’s marketing website as a scalable lead-generating machine. Our efforts included building custom lead-gen experiences, integrating all marking forms with Clearbit, and re-optimizing our blog experience for organic search traffic.',
+      desc: "Managed a team of internal Wordpress developers and our web-agency relationship with the primary goal of optimizing EVERFI's marketing website as a scalable lead-generating machine. Our efforts included building custom lead-gen experiences, integrating all marking forms with Clearbit, and re-optimizing our blog experience for organic search traffic.",
       link: {
          linkText: 'everfi.com',
          url: 'https://everfi.com/',
@@ -35,6 +36,7 @@ export const jobs = [
 
    {
       company: 'Social Tables',
+      companySubTitle: '(acquired by CVENT)',
       role: 'Web Developer & Marketing Operations Manager',
       location: 'Washington, D.C.',
       dates: '01.2016 – 03.2019',

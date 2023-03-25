@@ -36,12 +36,6 @@ export default class _document extends Document {
                <meta name="google-site-verification" content="W6Q3AE1kbGUlzyt_wRbCvr13gcfXqympu7hV91DbHWM" />
                <link
                   rel="stylesheet"
-                  href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
-                  as="font"
-                  crossOrigin=""
-               />
-               <link
-                  rel="stylesheet"
                   href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
                   as="font"
                   crossOrigin=""
