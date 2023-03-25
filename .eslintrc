@@ -1,5 +1,6 @@
 {
-  // "extends": ["wesbos"],
+  "extends": ["wesbos"],
+  "parser": "babel-eslint",
   "plugins": ["react-hooks"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
