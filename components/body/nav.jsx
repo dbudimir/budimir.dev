@@ -12,7 +12,7 @@ const NavContainer = styled.div`
   position: sticky;
   transition: transform 0.5s, opacity 0.5s;
   width: 200px;
-  transform: translateY(2000px);
+  transform: translateX(-2000px);
 
   .nav-link {
     align-items: center;
@@ -67,13 +67,13 @@ const NavContainer = styled.div`
     }
 
     &.show {
-      animation: grow 1.5s ease-in-out;
+      animation: grow 1s ease-in-out;
     }
 
     &.hide {
       max-height: 0px;
       opacity: 0;
-      animation: shrink 1.5s ease-in-out;
+      animation: shrink 1s ease-in-out;
     }
   }
 
@@ -127,7 +127,7 @@ const NavContainer = styled.div`
     margin-left: unset;
     transition: transform 0.5s, opacity 0.5s;
     width: max-content;
-    height: 80vh;
+    height: auto;
     background-color: #ffffff;
     border: 2px solid #a7f3d0;
     z-index: 100;

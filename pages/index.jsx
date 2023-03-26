@@ -144,7 +144,7 @@ const IndexContainer = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        height: 80%;
+        height: 150%;
         opacity: 0.6;
         z-index: -1;
         background: url(../../static/images/brush-stroke-2.png) no-repeat center
