@@ -8,7 +8,7 @@ export const projects = [
          'This is my first side business, designed to scale for thousands of users and generate recurring revenue.',
       ],
       tags: ['react', 'nextjs', 'mongodb', 'wordpress', 'socket.io', 'stripe api'],
-      links: [{ linkText: 'squad.lol', url: 'https://squad.lol/' }],
+      links: [{ linkText: 'squad.lol', url: 'https://squad.lol/' }, { linkText: 'watch video', url: 'https://www.youtube.com/watch?v=e_f3XnWO2KA' }],
    },
    {
       h3: 'Queen Ballers',
@@ -19,7 +19,7 @@ export const projects = [
       ],
       description: [
          "Queen Ballers provides in depth women's basketball coverage, player highlights, & drills for athletes.",
-         'This site is a headless wordpress project where each url is generated as a static page for optimal load times. ',
+         'This site is a headless wordpress project where each url is generated as a static page for optimal load times. I maintain this site as a side project, and as a way to stay on top of the most recent features in Next.js.',
       ],
       tags: ['react', 'nextjs', 'mongodb', 'headless wp', 'cheerio'],
       links: [
@@ -69,7 +69,7 @@ export const projects = [
       ],
    },
    {
-      h3: 'EVERFI: Workplace Training Evaluation Survey',
+      h3: 'EVERFI Training Survey',
       videoId: null,
       images: [
          { src: '/static/images/everfi-survey-thumb.png', alt: 'Everfi survey thumbnail', height: 242, width: 446 },

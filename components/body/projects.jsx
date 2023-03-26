@@ -7,6 +7,7 @@ import data from "../../data/projects";
 import { jobs } from "../../data/jobs";
 
 // Components
+import Nav from "./nav";
 import LinkIcon from "../icons/link";
 
 // Style
@@ -68,6 +69,8 @@ const ProjectContainer = styled.div`
     border-bottom: 1px solid #eeeef1;
     position: relative;
     overflow: hidden;
+    padding-top: 60px;
+    margin-top: -60px;
 
     h3 {
       text-transform: uppercase;
@@ -76,16 +79,34 @@ const ProjectContainer = styled.div`
 
     .outer-container {
       position: relative;
-      box-shadow: inset rgb(0 0 0 / 11%) -2px 0px 12px 0px;
       border-radius: 12px;
       max-width: 100%;
       width: 580px;
       overflow: scroll;
       overflow-y: hidden; /* Hide vertical scrollbar */
 
+      /* width */
+      ::-webkit-scrollbar {
+        height: 4px;
+        border-radius: 12px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #ffffff;
+
+        border-radius: 12px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #a7f3d0;
+        border-radius: 12px;
+      }
+
       .image-slider {
         display: inline-flex;
-        padding: 12px;
+        padding: 12px 12px 18px;
 
         .video-image-container {
           margin-right: 18px;
@@ -122,7 +143,7 @@ const ProjectContainer = styled.div`
 
     .fade {
       background: #ffffff;
-      top: 42px;
+      top: 102px;
       box-shadow: rgb(0 0 0 / 44%) -4px 0px 17px 0px;
       height: 242px;
       margin: 12px 0px;
@@ -223,60 +244,26 @@ const ProjectContainer = styled.div`
   }
 `;
 
-const Projects = ({ showHeader }) => {
-  const workButton = useRef(null);
-  const jobButton = useRef(null);
-  const resumeButton = useRef(null);
+const Projects = ({ showHeader, showNav, showProjectMenu }) => {
   //
   const workList = useRef(null);
   const jobsList = useRef(null);
 
-  useEffect(() => {
-    window.addEventListener(
-      "scroll",
-      () => {
-        const options = [workButton, jobButton].map((button) => {
-          button.current.classList.contains("active") &&
-            button.current.classList.remove("active");
-
-          return button;
-        });
-        // //
-        const activeOption =
-          window.pageYOffset > jobsList.current.offsetTop
-            ? options[1]
-            : options[0];
-        activeOption.current.classList.add("active");
-      },
-      { passive: true }
-    );
-  }, []);
-
   return (
     <ProjectContainer>
-      <div className={`nav ${showHeader && "show"}`}>
-        {[
-          { text: 'Work Samples', className: 'work-button', href: '/#work', target: null, ref: workButton, icon: null }, // prettier-ignore
-          { text: 'Professional History', className: 'job-history-button', href: '/#jobs', target: null, ref: jobButton, icon: null }, // prettier-ignore
-          { text: 'View Resume', className: 'resume-button', href: '../static/pdfs/david-budimir-resume-04-2023.pdf', target: '_blank', ref: resumeButton, icon: <img src="../static/icons/pdf-icon.png" alt="View resume" /> }, // prettier-ignore
-        ].map(({ text, icon, className, href, target, ref }, index) => (
-          <a
-            key={index}
-            className={className}
-            href={href}
-            ref={ref}
-            target={target}
-          >
-            {text}
-            {icon}
-          </a>
-        ))}
-      </div>
+      <Nav
+        data={data}
+        showHeader={showHeader}
+        showNav={showNav}
+        showProjectMenu={showProjectMenu}
+        jobsList={jobsList}
+      />
+
       <div className="work-history" id="work" ref={workList}>
         <h2>Work Samples</h2>
       </div>
-      {data.map(({ h3, videoId, images, description, tags, links }) => (
-        <div className="project-item" key={h3}>
+      {data.map(({ h3, videoId, images, description, tags, links }, i) => (
+        <div className="project-item" key={h3} id={`project${i}`}>
           <div className="fade" />
           <h3>{h3}</h3>
           <div className="outer-container">

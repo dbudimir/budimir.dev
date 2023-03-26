@@ -6,6 +6,7 @@ import styled from "styled-components";
 import data from "../data/employers";
 
 // Components
+import MenuIcon from "../components/menu-icon.jsx";
 import Body from "../components/body/body.jsx";
 import SocialLinks from "../components/social.jsx";
 
@@ -45,14 +46,21 @@ const IndexContainer = styled.div`
     .info {
       display: flex;
 
-      @media screen and (max-width: 768px) {
-        display: none;
-      }
-
       span {
         font-weight: 500;
         font-size: 14px;
         margin-left: 12px;
+      }
+
+      @media screen and (max-width: 768px) {
+        /* display: none; */
+        font-size: 11px;
+
+        span {
+          font-weight: 500;
+          font-size: 12px;
+          margin-left: 12px;
+        }
       }
     }
 
@@ -76,8 +84,8 @@ const IndexContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 12px;
-    border-radius: 18px;
+    margin-top: 10px;
+    border-radius: 30px;
 
     .employer-content {
       margin: 24px;
@@ -162,88 +170,6 @@ const IndexContainer = styled.div`
     position: relative;
     justify-content: center;
     margin: 0 auto;
-
-    .nav {
-      opacity: 0;
-      align-items: flex-end;
-      display: flex;
-      flex-direction: column;
-      height: 0;
-      margin-left: -230px;
-      position: sticky;
-      transition: transform 0.5s, opacity 0.5s;
-      width: 200px;
-      transform: translateY(2000px);
-      gap: 18px;
-
-      a {
-        align-items: center;
-        background: #fffae6;
-        border: 1px solid #ffe7a1;
-        border-radius: 6px;
-        border: 2px solid transparent;
-        box-shadow: rgba(0, 0, 0, 0.04) 1px 6px 12px 0px;
-        color: #393939;
-        display: block;
-        font-weight: 600;
-        padding: 4px 8px;
-        text-decoration: none;
-        transition: all 0.25s ease;
-        font-size: 15px;
-        font-weight: 500;
-
-        &:hover,
-        &.active {
-          background-color: #ffe7a1;
-          transform: scale(1.1);
-        }
-
-        img {
-          height: 18px;
-          margin-left: 8px;
-        }
-      }
-
-      .resume-button {
-        display: flex;
-        min-width: 120px;
-      }
-
-      &.show {
-        opacity: 1;
-        top: 100px;
-        transform: translateY(0px);
-
-        @media screen and (max-width: 940px) {
-          margin-left: 0;
-          z-index: 200;
-          top: calc(100% - 124px);
-          width: 100%;
-
-          a {
-            display: none;
-          }
-
-          .resume-button {
-            border-radius: 10px;
-            box-shadow: rgba(0, 0, 0, 0.14) 1px 6px 12px 0px;
-            box-sizing: border-box;
-            display: flex;
-            font-size: 18px;
-            justify-content: center;
-            margin: 0 auto;
-            padding: 12px 32px;
-            width: 100%;
-            min-height: 50px;
-
-            img {
-              height: 24px;
-              margin-left: 12px;
-            }
-          }
-        }
-      }
-    }
   }
 
   .about-me,
@@ -255,12 +181,17 @@ const IndexContainer = styled.div`
 const Index = (props) => {
   const { company } = props;
   const [showHeader, setShowHeader] = useState(false);
+  const [showNav, setShowNav] = useState(false);
+  const [showProjectMenu, setShowProjectMenu] = useState(false);
 
   useEffect(() => {
     TagManager.initialize(tagManagerArgs);
     window.addEventListener(
       "scroll",
-      () => setShowHeader(window.pageYOffset > 250),
+      () => {
+        setShowHeader(window.pageYOffset > 250);
+        setShowProjectMenu(window.pageYOffset > 1000);
+      },
       { passive: true }
     );
   }, []);
@@ -291,10 +222,9 @@ const Index = (props) => {
       <div className={`header ${showHeader && "show"}`}>
         <span>David Budimir</span>
         <div className="info">
-          <span>// software engineer // designer</span>
+          <span>dav.budimir@gmail.com</span>
         </div>
         <div className="spacer" />
-        <span className="contact">dav.budimir@gmail.com</span>
       </div>
 
       {
@@ -302,7 +232,7 @@ const Index = (props) => {
         company && data[company] && (
           <div className="employer">
             <div className="employer-content">
-              <span>Welcome hiring team from {data[company].company}</span>
+              <span>Welcome {data[company].company} team</span>
               <img
                 className="emp-logo"
                 src={data[company].logo.src}
@@ -314,6 +244,8 @@ const Index = (props) => {
         )
       }
 
+      <MenuIcon showNav={showNav} setShowNav={setShowNav} />
+
       <div className="about-me">
         <h1>David Budimir</h1>
         <div>
@@ -321,7 +253,11 @@ const Index = (props) => {
         </div>
       </div>
       <div className="layout">
-        <Body showHeader={showHeader} />
+        <Body
+          showHeader={showHeader}
+          showNav={showNav}
+          showProjectMenu={showProjectMenu}
+        />
       </div>
       <SocialLinks />
     </IndexContainer>

@@ -10,9 +10,13 @@ const BodyContainer = styled.div`
   max-width: 520px;
 `;
 
-const Body = ({ showHeader }) => (
+const Body = ({ showHeader, showNav, showProjectMenu }) => (
   <BodyContainer>
-    <Projects showHeader={showHeader} />
+    <Projects
+      showHeader={showHeader}
+      showNav={showNav}
+      showProjectMenu={showProjectMenu}
+    />
   </BodyContainer>
 );
 
