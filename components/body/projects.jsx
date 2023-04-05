@@ -53,13 +53,13 @@ const ProjectContainer = styled.div`
     }
   }
 
-  .job-history {
-    margin-top: 48px;
+  #work {
+    padding-top: 100px;
+    margin-top: -60px;
   }
 
-  #jobs,
-  #work {
-    padding-top: 60px;
+  #jobs {
+    padding-top: 100px;
     margin-top: -60px;
   }
 

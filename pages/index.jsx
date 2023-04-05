@@ -244,12 +244,14 @@ const Index = (props) => {
         )
       }
 
-      <MenuIcon showNav={showNav} setShowNav={setShowNav} />
+      {/* <MenuIcon showNav={showNav} setShowNav={setShowNav} /> */}
 
       <div className="about-me">
         <h1>David Budimir</h1>
         <div>
-          <span>// software engineer</span> <span>// designer</span>
+          <span>// software engineer</span>
+          <span>// designer</span>
+          <span>// marketing swiss-army-knife</span>
         </div>
       </div>
       <div className="layout">
