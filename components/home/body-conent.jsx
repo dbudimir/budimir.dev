@@ -85,7 +85,8 @@ const BodyContentContainer = styled.div`
           overflow: hidden;
           text-transform: lowercase;
           text-overflow: ellipsis;
-          text-wrap: nowrap;
+          white-space: nowrap;
+          overflow: visible;
           color: lightgray;
           font-size: 12px;
           pointer-events: none;
