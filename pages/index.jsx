@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import TagManager from "react-gtm-module";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import styled from "styled-components";
@@ -9,9 +8,6 @@ import data from "../data/employers";
 import MenuIcon from "../components/menu-icon.jsx";
 import Body from "../components/body/body.jsx";
 import SocialLinks from "../components/social.jsx";
-
-// Tag Manager
-const tagManagerArgs = { gtmId: "GTM-5KZP39S" };
 
 const IndexContainer = styled.div`
   scroll-behavior: smooth;
@@ -185,7 +181,6 @@ const Index = (props) => {
   const [showProjectMenu, setShowProjectMenu] = useState(false);
 
   useEffect(() => {
-    TagManager.initialize(tagManagerArgs);
     window.addEventListener(
       "scroll",
       () => {

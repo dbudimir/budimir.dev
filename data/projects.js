@@ -1,10 +1,10 @@
 export const projects = [
    {
-      h3: 'Squad😂',
+      h3: 'Squad',
       videoId: 'squad',
       images: [{ src: '/static/images/squad-website.png', alt: 'Squad website thumbnail', height: 242, width: 446 }],
       description: [
-         'Squad😂 is a full-featured SaaS product that makes it easier for small teams to stay on the same page, week-to-week.',
+         'Squad is a full-featured SaaS product that makes it easier for small teams to stay on the same page, week-to-week.',
          'This is my first side business, designed to scale for thousands of users and generate recurring revenue.',
       ],
       tags: ['react', 'nextjs', 'mongodb', 'wordpress', 'socket.io', 'stripe api'],

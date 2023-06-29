@@ -1,0 +1,20 @@
+// ANIMATIONS
+@keyframes fadeAndBounce {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-16px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
