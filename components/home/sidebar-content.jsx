@@ -172,6 +172,18 @@ const SidebarContent = (props) => {
         </div>
 
         <div className="contact">
+          <b>
+            <a
+              className="resume"
+              href="../static/pdfs/david-budimir-resume-04-2023.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              resume
+              <LinkIcon />
+            </a>
+          </b>
+          <br />
           <b>contact info ↴</b>
           <span className={`${showEmail ? "email-visible" : ""}`}>
             <div onClick={() => setShowEmail(!showEmail)}>
@@ -206,18 +218,6 @@ const SidebarContent = (props) => {
             linkedin
             <LinkIcon />
           </a>
-          <br />
-          <b>
-            <a
-              className="resume"
-              href="../static/pdfs/david-budimir-resume-04-2023.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              resume
-              <LinkIcon />
-            </a>
-          </b>
         </div>
       </SidebarContentContainer>
     </>

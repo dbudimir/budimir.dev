@@ -39,9 +39,6 @@ const Container = styled.div`
       .spacer {
         display: none;
       }
-      /* > div {
-        height: unset;
-      } */
     }
   }
 `;
