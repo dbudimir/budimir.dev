@@ -89,6 +89,7 @@ const BodyContentContainer = styled.div`
           overflow: visible;
           color: lightgray;
           font-size: 12px;
+          -webkit-text-size-adjust: none;
           pointer-events: none;
         }
 
