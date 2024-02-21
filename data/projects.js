@@ -19,9 +19,9 @@ export const projects = [
       ],
       description: [
          "Queen Ballers provides in depth women's basketball coverage, player highlights, & drills for athletes.",
-         'This site is a headless wordpress project where each url is generated as a static page for optimal load times. I maintain this site as a side project, and as a way to stay on top of the most recent features in Next.js.',
+         'This site is a headless wordpress project built on the latest version of Next.js. I maintain this site regularly as a way to stay on top of the most recent features in Next.js including the app router, and partial pre-rendering.',
       ],
-      tags: ['react', 'nextjs', 'mongodb', 'headless wp', 'cheerio'],
+      tags: ['react', 'nextjs', 'mongodb', 'headless wordpress', 'cheerio'],
       links: [
          { linkText: 'queenballers.club', url: 'https://queenballers.club/' },
          // { linkText: 'open repo', url: 'https://github.com/dbudimir/queen-ballers' },
@@ -35,7 +35,7 @@ export const projects = [
          'I worked with Greywing to build out the initial version of their cargo ship fleet management platform, and their marketing website.',
       ],
       tags: ['react', 'nextjs', 'leaflet', 'mapbox studio', 'google maps api', ],
-      links: [{ linkText: 'grey-wing.com', url: 'https://grey-wing.com/' }],
+      links: [{ linkText: 'grey-wing.com', url: 'https://greywing-marketing-caqps9urj-dbudi.vercel.app/' }],
    },
    {
       h3: 'Vodium',
@@ -60,7 +60,7 @@ export const projects = [
          { src: '/static/images/qsr-thumb.png', alt: 'API data model thumbnail', height: 242, width: 446 },
       ],
       description: [
-         'A search optimized site with dynamically generated pages, based on user-generated content. Mealdig lets users share their favorite custom orders at quick service restaurants like Chipotle and &pizza.',
+         'A search engine optimized site with dynamically generated pages, based on user-generated content. Mealdig lets users share their favorite custom orders at quick service restaurants like Chipotle and &pizza.',
       ],
       tags: ['React', 'Next.js', 'typescript', 'graphql', 'node', 'Express', 'Mongoose'],
       links: [

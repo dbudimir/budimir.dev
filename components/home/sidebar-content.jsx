@@ -16,16 +16,17 @@ const SidebarContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 24px;
 
   > img {
-    filter: grayscale(30%);
+    background-color: #454545;
+    padding: 12px;
   }
 
   .name,
   .info,
   .contact {
     box-sizing: border-box;
-    padding: 0px 0 0 12px;
   }
 
   .name {
@@ -34,10 +35,6 @@ const SidebarContentContainer = styled.div`
       margin: 0;
       width: 100%;
     }
-
-    h3 {
-      color: #454545;
-    }
   }
 
   .info {
@@ -45,6 +42,7 @@ const SidebarContentContainer = styled.div`
       display: flex;
       align-items: first baseline;
       gap: 4px;
+
       span {
         color: #454545;
         font-size: 12px;
@@ -52,9 +50,51 @@ const SidebarContentContainer = styled.div`
     }
   }
 
+  .resume {
+    display: flex;
+    width: max-content;
+    cursor: pointer;
+
+    a {
+      display: flex;
+      text-decoration: none;
+      color: #000000;
+      border-bottom: 6px solid rgb(255, 231, 161);
+      border-left: 6px solid rgb(255, 231, 161);
+      line-height: 1;
+    }
+
+    svg {
+      transition: ease-in-out 0.2s;
+      transform: translateY(2px);
+      height: 12px;
+    }
+
+    &:hover {
+      svg {
+        transition: ease-in-out 0.2s;
+        transform: translateY(2px) scale(1.2);
+      }
+    }
+  }
+
   .contact {
     display: flex;
     flex-direction: column;
+    gap: 4px;
+
+    @media screen and (max-width: 768px) {
+      gap: 8px;
+    }
+
+    .contact-info {
+      display: flex;
+      width: max-content;
+      border-bottom: 6px solid rgb(255, 231, 161);
+      border-left: 6px solid rgb(255, 231, 161);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
 
     a {
       display: flex;
@@ -100,7 +140,6 @@ const SidebarContentContainer = styled.div`
       }
 
       .show-email {
-        margin-bottom: 8px;
         color: #454545;
         font-size: 14px;
         display: flex;
@@ -156,7 +195,6 @@ const SidebarContent = (props) => {
         />
         <div className="name">
           <h1>DAVID BUDIMIR</h1>
-          <h3>давид будимир</h3>
         </div>
 
         <div className="info">
@@ -167,24 +205,24 @@ const SidebarContent = (props) => {
             designer <span>(7 years)</span>
           </div>
           <div>
-            saas marketing <span>(8 years)</span>
+            saas marketing & seo <span>(8 years)</span>
           </div>
         </div>
 
+        <b className="resume">
+          <a
+            href="../static/pdfs/david-budimir-resume-2024.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            resume
+          </a>
+
+          <LinkIcon />
+        </b>
+
         <div className="contact">
-          <b>
-            <a
-              className="resume"
-              href="../static/pdfs/david-budimir-resume-04-2023.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              resume
-              <LinkIcon />
-            </a>
-          </b>
-          <br />
-          <b>contact info ↴</b>
+          <b className="contact-info">contact info</b>
           <span className={`${showEmail ? "email-visible" : ""}`}>
             <div onClick={() => setShowEmail(!showEmail)}>
               email <ChevronIcon />

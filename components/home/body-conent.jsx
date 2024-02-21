@@ -10,16 +10,11 @@ import styled from "styled-components";
 import Chevron from "../icons/chevron";
 
 const BodyContentContainer = styled.div`
-  padding: 24px 12px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  gap: 24px;
-
-  .spacer {
-    height: 40vh;
-  }
+  flex-grow: 1;
 
   .cover {
     width: 100%;
@@ -27,7 +22,8 @@ const BodyContentContainer = styled.div`
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-end;
-    margin: 0 auto;
+    margin-bottom: 12px;
+    line-height: 1;
 
     b {
       border-bottom: 6px solid rgb(255, 231, 161);
@@ -37,32 +33,50 @@ const BodyContentContainer = styled.div`
 
   .content {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+
+    @media screen and (max-width: 768px) {
+      gap: 8px;
+    }
 
     .project {
       display: flex;
       width: 100%;
-      gap: 12px;
       overflow: hidden;
       flex-direction: column;
 
       :not(.open) {
         .project-title {
+          transition: all 0.25s ease-out;
           svg {
+            display: none;
+          }
+        }
+      }
+
+      &.open {
+        .project-title {
+          transition: all 0.25s ease-out;
+
+          :not(#project0) {
+            margin-top: 12px;
+          }
+
+          h4 {
+            font-weight: 700;
+          }
+
+          .title-description {
             display: none;
           }
         }
 
         .project-content {
-          display: none;
-        }
-      }
-
-      &.open {
-        padding: 12px 0 24px;
-        .project-title {
-          .title-description {
-            display: none;
-          }
+          margin: 0px 0 24px;
+          max-height: 800px;
+          transition: all 0.35s ease-out;
         }
       }
 
@@ -87,7 +101,7 @@ const BodyContentContainer = styled.div`
           text-overflow: ellipsis;
           white-space: nowrap;
           overflow: visible;
-          color: lightgray;
+          color: #b0aeae;
           font-size: 12px;
           -webkit-text-size-adjust: none;
           pointer-events: none;
@@ -113,19 +127,64 @@ const BodyContentContainer = styled.div`
       }
 
       .project-content {
+        max-height: 0;
+        margin: 0;
+        transition: all 0.25s ease-out;
+        overflow: hidden;
+
         .description {
-          margin: 0 0 24px 0;
-          font-size: 14px;
+          margin: 12px 0;
+          font-size: 16px;
           max-width: 600px;
         }
 
-        .tag-row {
+        .bullets {
+          margin: 0 0 8px 0px;
+          font-size: 14px;
+          max-width: 600px;
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+
+          span {
+            font-size: 10px;
+            transform: translateY(3px);
+          }
+        }
+
+        .stack {
+          margin: 18px 0 0;
           width: 100%;
           display: flex;
           gap: 6px;
-          align-items: center;
           flex-wrap: wrap;
           font-size: 14px;
+          flex-wrap: wrap;
+          max-width: 600px;
+
+          b {
+            font-weight: 400;
+          }
+
+          span {
+            border: 1px solid gray;
+            padding: 2px 4px;
+            font-size: 12px;
+            line-height: 1;
+            border-radius: 4px;
+            color: gray;
+          }
+        }
+
+        .tag-row {
+          margin: 18px 0 0;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          flex-wrap: wrap;
+          font-size: 14px;
+          max-width: 600px;
 
           .links,
           .tags {
@@ -159,8 +218,19 @@ const BodyContentContainer = styled.div`
           display: flex;
           gap: 6px;
           overflow-x: scroll;
+          margin: 24px 0 0 0;
           padding-bottom: 12px;
-          margin-bottom: 24px;
+
+          > * {
+            margin-left: 10px;
+            border: 2px solid #eeeef1;
+            border-radius: 20px;
+            max-height: 250px;
+
+            iframe {
+              border-radius: 20px;
+            }
+          }
 
           /* width */
           ::-webkit-scrollbar {
@@ -178,10 +248,6 @@ const BodyContentContainer = styled.div`
           ::-webkit-scrollbar-thumb {
             background: rgb(255, 231, 161);
             border-radius: 12px;
-          }
-
-          > * {
-            height: 250px;
           }
         }
 
@@ -220,7 +286,7 @@ const BodyContent = (props) => {
     <BodyContentContainer>
       <div className="spacer" />
       <div className="cover">
-        <b> experience </b>
+        <b>experience</b>
       </div>
       <div className="content">
         {jobs.map((job, i) => {
@@ -231,18 +297,40 @@ const BodyContent = (props) => {
               <div
                 onClick={(e) => onProjectClick(e, "job")}
                 id={`project${i}`}
-                class="project-title "
+                className="project-title "
               >
                 <h4>
                   {job.company} {job.companySubTitle}
                 </h4>
                 <span className="title-description">{job.role}</span>
-                <Chevron class="chevron" />
+                <Chevron className="chevron" />
               </div>
               <div className="project-content">
-                <p className="description">→ {job.desc}</p>
+                <p className="description">{job.desc}</p>
+                {job.bullets &&
+                  job.bullets.map((bullet, i) => (
+                    <p className="bullets" key={i}>
+                      <span>→</span> {bullet}
+                    </p>
+                  ))}
+
+                {job.tags?.length && (
+                  <div className="tags stack">
+                    {
+                      // Tags
+                      job.tags.map((tag, index) => (
+                        <span key={index}>{tag}</span>
+                      ))
+                    }
+                  </div>
+                )}
 
                 <div className="tag-row">
+                  <div className="tags">
+                    <span className="location">{job.location}</span>
+                    <span className="dates">{job.dates}</span>
+                  </div>
+
                   <div className="links">
                     <div className="link">
                       <a href={job.link.url} target="_blank" rel="noreferrer">
@@ -251,10 +339,6 @@ const BodyContent = (props) => {
                       <LinkIcon />
                     </div>
                   </div>
-                  <div className="tags">
-                    <span className="location">{job.location}</span>
-                    <span className="dates">{job.dates}</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -262,7 +346,7 @@ const BodyContent = (props) => {
         })}
       </div>
       <div className="cover">
-        <b> projects </b>
+        <b>work samples</b>
       </div>
       <div className="content">
         {data.map((project, i) => {
@@ -277,19 +361,21 @@ const BodyContent = (props) => {
               <div
                 onClick={(e) => onProjectClick(e, "project")}
                 id={`project${i}`}
-                class="project-title"
+                className="project-title"
               >
                 <h4>{project.h3}</h4>
-                <span class="title-description">{project.description[0]}</span>
-                <Chevron class="chevron" />
+                <span className="title-description">
+                  {project.description[0]}
+                </span>
+                <Chevron />
               </div>
 
               <div className="project-content">
                 {/* Description */}
                 <p className="description">
                   →{" "}
-                  {project.description.map((line) => (
-                    <>{line} </>
+                  {project.description.map((line, i) => (
+                    <span key={i}>{line}</span>
                   ))}
                 </p>
 
@@ -347,6 +433,15 @@ const BodyContent = (props) => {
                   }
                 </div>
 
+                <div className="tags stack">
+                  {
+                    // Tags
+                    project.tags.map((tag, index) => (
+                      <span key={index}>{tag}</span>
+                    ))
+                  }
+                </div>
+
                 <div className="tag-row">
                   {/* Links */}
                   <div className="links">
@@ -358,14 +453,6 @@ const BodyContent = (props) => {
                         <LinkIcon />
                       </div>
                     ))}
-                  </div>
-                  <div className="tags">
-                    {
-                      // Tags
-                      project.tags.map((tag, index) => (
-                        <span key={index}>{tag}</span>
-                      ))
-                    }
                   </div>
                 </div>
                 {/* <div className="spacer"></div> */}
