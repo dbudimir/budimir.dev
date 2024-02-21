@@ -2,7 +2,7 @@ export const jobs = [
    {
       company: 'BestEgg',
       // companySubTitle: '(acquired by Best Egg)',
-      role: 'Software Engineer II',
+      role: 'Lead Software Engineer II',
       location: 'Washington, D.C. // Remote',
       dates: '04.2021 – Present',
       desc: "As a Full Stack Software Engineer, I played a role in shaping user-facing products that now serve over ten-thousand new applicants a month and support thousands of monthly active users. ",
