@@ -5,7 +5,7 @@ export const jobs = [
       role: 'Lead Software Engineer II',
       location: 'Washington, D.C. // Remote',
       dates: '04.2021 – Present',
-      desc: "As a Full Stack Software Engineer, I played a role in shaping user-facing products that now serve over ten-thousand new applicants a month and support thousands of monthly active users. ",
+      desc: "As a full-stack engineer, I played a role in shaping user-facing products that now serve over ten-thousand new applicants a month and support thousands of monthly active users. ",
       bullets: [
          'Architected two Vue 3 front-ends during a major product rebuild and migration from React, ensuring scalability and a seamless dev experience.',
          'Took ownership of testing, custom logging, and monitoring user behavior, which resulted in more proactive bug reporting and faster resolution times.',
