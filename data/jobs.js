@@ -22,7 +22,7 @@ export const jobs = [
       company: 'EVERFI',
       role: 'Director of Web Operations ',
       location: 'Washington, D.C.',
-      dates: '09.2019 – 03.2020',
+      dates: '08.2019 – 03.2020',
       desc: "I was brought on as the Director of Web Operations to re-architect Everfi's marketing website to align with the company's new product direction, and improve performance for SEO. ",
       bullets: [
          "Led a team of internal Wordpress developers and managed a partnership with a web agency to transform EVERFI's marketing website into a lead-generating engine.",
