@@ -1,6 +1,6 @@
 export const jobs = [
    {
-      company: 'BestEgg',
+      company: 'Best Egg',
       // companySubTitle: '(acquired by Best Egg)',
       role: 'Lead Software Engineer II',
       location: 'Washington, D.C. // Remote',
