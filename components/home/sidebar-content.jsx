@@ -21,12 +21,7 @@ const SidebarContentContainer = styled.div`
   > img {
     background-color: #454545;
     padding: 12px;
-  }
-
-  .name,
-  .info,
-  .contact {
-    box-sizing: border-box;
+    margin-bottom: 6px;
   }
 
   .name {
@@ -35,9 +30,15 @@ const SidebarContentContainer = styled.div`
       margin: 0;
       width: 100%;
     }
+
+    line-height: 1;
   }
 
   .info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
     div {
       display: flex;
       align-items: first baseline;
@@ -102,6 +103,7 @@ const SidebarContentContainer = styled.div`
       text-decoration: none;
       color: #000000;
       cursor: pointer;
+      width: max-content;
 
       &:hover {
         svg {
