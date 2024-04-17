@@ -25,8 +25,6 @@ const MenuIconContainer = styled.div`
 `;
 
 const name = ({ showNav, setShowNav }) => {
-  console.log("new component");
-
   return (
     <MenuIconContainer onClick={() => setShowNav(!showNav)}>
       <Image

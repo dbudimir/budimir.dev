@@ -1,9 +1,12 @@
-module.exports = {
-   images: {
-      // swcMinify: true,
-      future: { webpack5: true },
-      compiler: {
-         styledComponents: true,
-      },
-   },
+/**
+ * @type {import('next').NextConfig}
+ */
+
+const nextConfig = {
+  // output: 'export',
+  compiler: {
+    styledComponents: true
+  }
 }
+
+module.exports = nextConfig

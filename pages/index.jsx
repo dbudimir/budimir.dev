@@ -119,10 +119,4 @@ const Index = (props) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  return {
-    props: { company: context.query.company || null },
-  };
-}
-
 export default Index;
