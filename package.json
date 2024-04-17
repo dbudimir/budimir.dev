@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start"
   },
+  "engines": {
+    "node": ">=20.0.0 <21.0.0" 
+  },
   "dependencies": {
     "@babel/eslint-parser": "^7.21.3",
     "@next/font": "^13.2.4",
