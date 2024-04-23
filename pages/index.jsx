@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // Components
 import SidebarContent from "../components/home/sidebar-content.jsx";
-import BodyContent from "../components/home/body-conent.jsx";
+import BodyContent from "../components/home/body-content.jsx";
 
 const Container = styled.div`
   scroll-behavior: smooth;

@@ -2,12 +2,12 @@ import { useRef, createRef } from "react";
 import Image from "next/image";
 import YouTube from "react-youtube";
 
-import LinkIcon from "../../components/icons/link.jsx";
-import data from "../../data/projects";
-import { jobs } from "../../data/jobs";
+import LinkIcon from "../icons/link.jsx";
+import data from "../../data/projects.js";
+import { jobs } from "../../data/jobs.js";
 
 import styled from "styled-components";
-import Chevron from "../icons/chevron";
+import Chevron from "../icons/chevron.jsx";
 
 const BodyContentContainer = styled.div`
   display: flex;
