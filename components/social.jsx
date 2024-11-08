@@ -180,7 +180,7 @@ const Sidebar = () => {
           <img src="/static/icons/linkedin.svg" alt="linkedin-icon" />
         </a>
         <a
-          href="../static/pdfs/david-budimir-resume-04-2023.pdf"
+          href="../static/pdfs/david-budimir-resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >

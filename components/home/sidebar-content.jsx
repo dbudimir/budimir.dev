@@ -196,7 +196,7 @@ const SidebarContent = (props) => {
           width="100"
         />
         <div className="name">
-          <h1>DAVID BUDIMIR</h1>
+          <h1>david budimir</h1>
         </div>
 
         <div className="info">

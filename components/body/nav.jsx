@@ -182,7 +182,7 @@ const Nav = ({ data, showHeader, showNav, showProjectMenu, jobsList }) => {
       {[
         { text: 'Work Samples', className: 'work-button', href: '/#work', target: null, ref: workButton, icon: null }, // prettier-ignore
         { text: 'Professional History', className: 'job-history-button', href: '/#jobs', target: null, ref: jobButton, icon: null }, // prettier-ignore
-        { text: 'View Resume', className: 'resume-button', href: '../static/pdfs/david-budimir-resume-04-2023.pdf', target: '_blank', ref: resumeButton, icon: <img src="../static/icons/pdf-icon.png" alt="View resume" /> }, // prettier-ignore
+        { text: 'View Resume', className: 'resume-button', href: '../static/pdfs/david-budimir-resume.pdf', target: '_blank', ref: resumeButton, icon: <img src="../static/icons/pdf-icon.png" alt="View resume" /> }, // prettier-ignore
       ].map(({ text, icon, className, href, target, ref }, i) => (
         <>
           <a
