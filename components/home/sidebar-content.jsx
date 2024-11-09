@@ -213,7 +213,7 @@ const SidebarContent = (props) => {
 
         <b className="resume">
           <a
-            href="../static/pdfs/david-budimir-resume-2024-05.pdf"
+            href="../static/pdfs/david-budimir-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
