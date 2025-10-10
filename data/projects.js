@@ -23,7 +23,7 @@ export const projects = [
       ],
       tags: ['react', 'nextjs', 'mongodb', 'headless wordpress', 'cheerio'],
       links: [
-         { linkText: 'queenballers.club', url: 'https://queenballers.club/' },
+         { linkText: 'queen-ballers.vercel.app', url: 'https://queen-ballers.vercel.app/' },
          // { linkText: 'open repo', url: 'https://github.com/dbudimir/queen-ballers' },
       ],
    },
