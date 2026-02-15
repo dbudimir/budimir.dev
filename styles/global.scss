@@ -11,7 +11,7 @@ $colors: (
   text-dark: #393939,
   text-muted: #454545,
   gray: #b0aeae,
-  background: #ffffff,
+  background: #FBF9F5,
   surface: #f8f8fa,
   border: #eeeef1,
   accent: #ffe7a1,
@@ -198,22 +198,21 @@ a {
 // ANIMATIONS
 // =============================================================================
 
-@keyframes fadeAndBounce {
+@keyframes slideReveal {
   0% {
+    max-width: 0;
+    opacity: 0;
+  }
+  20% {
     opacity: 1;
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(-16px);
-  }
-  50% {
-    transform: translateY(0);
+    max-width: 300px;
   }
   75% {
-    transform: translateY(-4px);
+    opacity: 1;
+    max-width: 300px;
   }
   100% {
+    max-width: 0;
     opacity: 0;
-    transform: translateY(0);
   }
 }

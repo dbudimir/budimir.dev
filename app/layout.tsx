@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { GeistSans } from 'geist/font/sans';
+import StyledComponentsRegistry from '../lib/registry';
 import '../styles/global.scss';
 
 export const metadata: Metadata = {
@@ -17,7 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <GoogleTagManager gtmId="GTM-5KZP39S" />
       <body>
-        <div className={GeistSans.className}>{children}</div>
+        <StyledComponentsRegistry>
+          <div className={GeistSans.className}>{children}</div>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

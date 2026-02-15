@@ -18,9 +18,9 @@ const ContentContainer = styled.div`
   gap: var(--spacing-xl);
 
   > img {
-    background-color: var(--color-text-muted);
-    padding: var(--spacing-md);
-    margin-bottom: 6px;
+    
+    
+    
   }
 
   .name {
@@ -59,8 +59,6 @@ const ContentContainer = styled.div`
       display: flex;
       text-decoration: none;
       color: var(--color-black);
-      border-bottom: 6px solid var(--color-accent);
-      border-left: 6px solid var(--color-accent);
       line-height: 1;
     }
 
@@ -82,7 +80,7 @@ const ContentContainer = styled.div`
 const Content = () => {
   return (
     <ContentContainer>
-      <Image src="/static/images/lemon.png" alt="David Budimir" height="100" width="100" />
+      <Image src="/static/images/cap.png" alt="David Budimir" height="100" width="100" />
 
       <div className="name">
         <h1>david budimir</h1>

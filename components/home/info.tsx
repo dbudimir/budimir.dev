@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import styled from 'styled-components';
-import ChevronIcon from '../icons/chevron';
 import CopyIcon from '../icons/copy';
 import LinkIcon from '../icons/link';
 
@@ -17,8 +16,6 @@ const InfoContainer = styled.div`
   .contact-info {
     display: flex;
     width: max-content;
-    border-bottom: 6px solid var(--color-accent);
-    border-left: 6px solid var(--color-accent);
     margin-bottom: var(--spacing-sm);
     line-height: 1;
   }
@@ -26,7 +23,7 @@ const InfoContainer = styled.div`
   .list-row {
     display: flex;
     align-items: center;
-    min-height: 20px;
+    height: 20px;
     width: max-content;
     text-decoration: none;
     color: var(--color-black);
@@ -53,7 +50,7 @@ const InfoContainer = styled.div`
     .email-toggle {
       display: flex;
       align-items: center;
-      min-height: 20px;
+      height: 20px;
       gap: 6px;
       background: none;
       border: none;
@@ -92,9 +89,11 @@ const InfoContainer = styled.div`
       }
 
       .copied-indicator {
-        animation-name: fadeAndBounce;
-        animation-duration: 1.5s;
-        animation-fill-mode: forwards;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 0;
+        animation: slideReveal 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
         padding: 0 0 0 4px;
       }
     }
@@ -110,7 +109,6 @@ const InfoContainer = styled.div`
 `;
 
 const Info = () => {
-  const [showEmail, setShowEmail] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
 
   const copyEmail = () => {
@@ -118,30 +116,31 @@ const Info = () => {
     navigator.clipboard.writeText('dav.budimir@gmail.com');
     setTimeout(() => {
       setShowCopied(false);
-    }, 1500);
+    }, 2500);
   };
 
   return (
     <InfoContainer>
       <b className="contact-info">contact info</b>
 
-      <span className={`email-wrapper ${showEmail ? 'email-visible' : ''}`}>
-        <button type="button" className="email-toggle" onClick={() => setShowEmail(!showEmail)}>
-          email <ChevronIcon />
+      <span className={`email-wrapper`}>
+        <button type="button" onClick={copyEmail} className="show-email">
+          email <CopyIcon />
+          {showCopied && <div className="copied-indicator">Copied dav.budimir@gmail.com </div>}
         </button>
-        {showEmail && (
-          <button type="button" onClick={copyEmail} className="show-email">
-            dav.budimir@gmail.com <CopyIcon />
-            {showCopied && <div className="copied-indicator">Copied !!!</div>}
-          </button>
-        )}
       </span>
 
       <a className="list-row" href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
         github
         <LinkIcon />
       </a>
-      <a className="list-row" href="https://www.linkedin.com/in/davidbudimir/" target="_blank" rel="noopener noreferrer">
+
+      <a
+        className="list-row"
+        href="https://www.linkedin.com/in/davidbudimir/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         linkedin
         <LinkIcon />
       </a>

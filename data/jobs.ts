@@ -2,10 +2,27 @@ import type { Job } from '../types';
 
 export const jobs: Job[] = [
   {
+    company: 'Bilt',
+    role: 'Software Engineer',
+    location: 'New York, NY // Remote',
+    dates: '01.2025 – Present',
+    desc: 'As a full-stack engineer shipping across web and mobile, I work on complex features and build tooling to keep the teams moving.',
+    bullets: [
+      'Owned the lease application flow on the frontend — a highly dynamic, multi-service integration with a new frictionless login experience that was immediately reused by other teams.',
+      'Built an AI-powered e2e testing framework with Stagehand and Playwright, plus a mock partner app that became a team-wide tool for testing complex auth and SSO flows.',
+      'Led the "my home" page redesign and autopay migration, managing feature rollouts and shipping cross-platform changes on tight deadlines.',
+    ],
+    tags: ['next.js', 'typescript', 'cursor', 'claude code', 'gcp', 'browserbase'],
+    link: {
+      linkText: 'bilt.com',
+      url: 'https://www.bilt.com/',
+    },
+  },
+  {
     company: 'Best Egg',
     role: 'Lead Software Engineer II',
     location: 'Washington, D.C. // Remote',
-    dates: '04.2021 – Present',
+    dates: '04.2021 – 01.2025',
     desc: 'As a full-stack engineer, I played a role in shaping user-facing products that now serve over ten-thousand new applicants a month and support thousands of monthly active users.',
     bullets: [
       'Architected two Vue 3 front-ends during a major product rebuild and migration from React, ensuring scalability and a seamless dev experience.',
