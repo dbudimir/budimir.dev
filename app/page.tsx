@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description: 'David Budimir is a software engineer, designer, and SaaS marketing expert.',
   openGraph: {
     description: 'David Budimir is a software engineer, designer, and SaaS marketing expert.',
-    images: ['https://www.budimir.dev/static/images/og-image.png'],
+    images: ['https://www.budimir.dev/static/images/og-image.webp'],
   },
   twitter: {
-    images: ['https://www.budimir.dev/static/images/og-image.png'],
+    images: ['https://www.budimir.dev/static/images/og-image.webp'],
   },
 };
 

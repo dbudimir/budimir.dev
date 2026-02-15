@@ -49,7 +49,11 @@ const Experience = () => {
         {jobs.map((job, i) => (
           <div key={job.company} className={`project ${openJobs.has(i) ? 'open' : ''}`}>
             <ProjectButton
-              title={<>{job.company} {job.companySubTitle}</>}
+              title={
+                <>
+                  {job.company} {job.companySubTitle}
+                </>
+              }
               description={job.role}
               isOpen={openJobs.has(i)}
               onClick={() => toggleJob(i)}

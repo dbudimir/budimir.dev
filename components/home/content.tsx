@@ -80,7 +80,7 @@ const ContentContainer = styled.div`
 const Content = () => {
   return (
     <ContentContainer>
-      <Image src="/static/images/cap.png" alt="David Budimir" height="100" width="100" />
+      <Image src="/static/images/cap.webp" alt="David Budimir" height="65" width="100" />
 
       <div className="name">
         <h1>david budimir</h1>

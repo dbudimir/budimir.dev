@@ -8,7 +8,7 @@ export const jobs: Job[] = [
     dates: '01.2025 – Present',
     desc: 'As a full-stack engineer shipping across web and mobile, I work on complex features and build tooling to keep the teams moving.',
     bullets: [
-      'Owned the lease application flow on the frontend — a highly dynamic, multi-service integration with a new frictionless login experience that was immediately reused by other teams.',
+      'Owned the lease application flow on the frontend — a highly dynamic, multi-service integration with a new frictionless login experience that reusable for teams across the company.',
       'Built an AI-powered e2e testing framework with Stagehand and Playwright, plus a mock partner app that became a team-wide tool for testing complex auth and SSO flows.',
       'Led the "my home" page redesign and autopay migration, managing feature rollouts and shipping cross-platform changes on tight deadlines.',
     ],
