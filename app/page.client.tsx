@@ -1,8 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import BodyContent from '../components/home/body-content';
-import SidebarContent from '../components/home/sidebar-content';
+import Content from '../components/home/content';
 
 const Container = styled.div`
 	scroll-behavior: smooth;
@@ -10,10 +9,8 @@ const Container = styled.div`
 	flex-direction: column;
 	overflow: hidden;
 	padding: var(--spacing-lg);
-
 	--offset: 3px;
 	position: relative;
-	box-sizing: border-box;
 
 	&:before {
 		content: '';
@@ -44,46 +41,15 @@ const Container = styled.div`
 		}
 	}
 
-	.left-col,
-	.right-col {
+	> * {
 		z-index: 1;
-	}
-
-	.left-col {
-		overflow: hidden;
-	}
-
-	.right-col {
-		flex-grow: 1;
-		overflow: scroll;
-		overflow-x: hidden;
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		flex-direction: column;
-		height: unset;
-
-		.right-col {
-			width: 100%;
-			overflow: unset;
-		}
 	}
 `;
 
 const HomePage = () => {
   return (
     <Container>
-      <div className="left-col">
-        <SidebarContent />
-      </div>
-
-      <div className="right-col">
-        <BodyContent />
-      </div>
+      <Content />
     </Container>
   );
 };

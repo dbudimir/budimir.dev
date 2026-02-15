@@ -4,18 +4,15 @@ import Image from 'next/image';
 import { useState } from 'react';
 import YouTube from 'react-youtube';
 import styled from 'styled-components';
-import { jobs } from '../../data/jobs';
 import projects from '../../data/projects';
 import type { Project } from '../../types';
 import ChevronIcon from '../icons/chevron';
 import LinkIcon from '../icons/link';
 
-const BodyContentContainer = styled.div`
+const WorkContainer = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
   flex-direction: column;
-  flex-grow: 1;
 
   .cover {
     width: 100%;
@@ -85,7 +82,7 @@ const BodyContentContainer = styled.div`
       .project-title {
         display: flex;
         align-items: center;
-        margin-bottom: var(--spacing-xs);
+        min-height: 20px;
         gap: var(--spacing-xs);
         background: none;
         border: none;
@@ -143,20 +140,6 @@ const BodyContentContainer = styled.div`
           margin: var(--spacing-md) 0;
           font-size: 16px;
           max-width: 600px;
-        }
-
-        .bullets {
-          margin: 0 0 var(--spacing-sm) 0;
-          font-size: 14px;
-          max-width: 600px;
-          display: flex;
-          align-items: flex-start;
-          gap: var(--spacing-md);
-
-          span {
-            font-size: 10px;
-            transform: translateY(3px);
-          }
         }
 
         .stack {
@@ -253,13 +236,6 @@ const BodyContentContainer = styled.div`
             border-radius: 12px;
           }
         }
-
-        .spacer {
-          height: 2px;
-          width: 25%;
-          background-color: var(--color-text-muted);
-          margin: var(--spacing-xl) 0;
-        }
       }
     }
   }
@@ -269,7 +245,6 @@ interface VideoMediaProps {
   videoId: Project['videoId'];
 }
 
-// Video component to reduce repetition
 const VideoMedia = ({ videoId }: VideoMediaProps) => {
   if (videoId === 'squad') {
     return (
@@ -304,21 +279,8 @@ const VideoMedia = ({ videoId }: VideoMediaProps) => {
   return null;
 };
 
-const BodyContent = () => {
-  const [openJobs, setOpenJobs] = useState<Set<number>>(new Set());
+const Work = () => {
   const [openProjects, setOpenProjects] = useState<Set<number>>(new Set());
-
-  const toggleJob = (index: number) => {
-    setOpenJobs(prev => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
-      }
-      return next;
-    });
-  };
 
   const toggleProject = (index: number) => {
     setOpenProjects(prev => {
@@ -333,61 +295,7 @@ const BodyContent = () => {
   };
 
   return (
-    <BodyContentContainer>
-      <div className="spacer" />
-
-      {/* Experience Section */}
-      <div className="cover">
-        <b>experience</b>
-      </div>
-      <div className="content">
-        {jobs.map((job, i) => (
-          <div key={job.company} className={`project ${openJobs.has(i) ? 'open' : ''}`}>
-            <button type="button" onClick={() => toggleJob(i)} className="project-title">
-              <h4>
-                {job.company} {job.companySubTitle}
-              </h4>
-              <span className="title-description">{job.role}</span>
-              <ChevronIcon />
-            </button>
-
-            <div className="project-content">
-              <p className="description">{job.desc}</p>
-
-              {job.bullets?.map(bullet => (
-                <p className="bullets" key={bullet}>
-                  <span>→</span> {bullet}
-                </p>
-              ))}
-
-              {job.tags && job.tags.length > 0 && (
-                <div className="tags stack">
-                  {job.tags.map(tag => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              )}
-
-              <div className="tag-row">
-                <div className="tags">
-                  <span className="location">{job.location}</span>
-                  <span className="dates">{job.dates}</span>
-                </div>
-                <div className="links">
-                  <div className="link">
-                    <a href={job.link.url} target="_blank" rel="noreferrer">
-                      {job.link.linkText}
-                    </a>
-                    <LinkIcon />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Work Samples Section */}
+    <WorkContainer>
       <div className="cover">
         <b>work samples</b>
       </div>
@@ -437,8 +345,8 @@ const BodyContent = () => {
           </div>
         ))}
       </div>
-    </BodyContentContainer>
+    </WorkContainer>
   );
 };
 
-export default BodyContent;
+export default Work;
