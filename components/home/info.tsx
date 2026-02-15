@@ -28,6 +28,11 @@ const InfoContainer = styled.div`
     text-decoration: none;
     color: var(--color-black);
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    gap: var(--spacing-xs);
 
     &:hover {
       svg {
@@ -36,74 +41,23 @@ const InfoContainer = styled.div`
     }
 
     svg {
-      height: 14px;
       opacity: 0;
     }
-  }
 
-  .email-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    cursor: pointer;
-
-    .email-toggle {
-      display: flex;
-      align-items: center;
-      height: 20px;
-      gap: 6px;
-      background: none;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-
-      &:hover {
+    &.email-row {
         svg {
           opacity: 1;
         }
-      }
-
-      svg {
-        width: 14px;
-        height: 14px;
-        opacity: 0;
-      }
     }
 
-    .show-email {
+    .copied-indicator {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 0;
+      animation: slideReveal 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      padding: 0 0 0 4px;
       color: var(--color-text-muted);
-      font-size: 14px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: var(--spacing-xs);
-      background: none;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-
-      svg {
-        width: 14px;
-      }
-
-      .copied-indicator {
-        display: inline-block;
-        white-space: nowrap;
-        overflow: hidden;
-        max-width: 0;
-        animation: slideReveal 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-        padding: 0 0 0 4px;
-      }
-    }
-
-    &.email-visible {
-      .email-toggle {
-        svg {
-          transform: rotate(180deg);
-        }
-      }
     }
   }
 `;
@@ -123,16 +77,14 @@ const Info = () => {
     <InfoContainer>
       <b className="contact-info">contact info</b>
 
-      <span className={`email-wrapper`}>
-        <button type="button" onClick={copyEmail} className="show-email">
-          email <CopyIcon />
-          {showCopied && <div className="copied-indicator">Copied dav.budimir@gmail.com </div>}
-        </button>
-      </span>
+      <button type="button" onClick={copyEmail} className="list-row email-row">
+        email <CopyIcon style={{ width: 12 }} />
+        {showCopied && <div className="copied-indicator">copied dav.budimir@gmail.com </div>}
+      </button>
 
       <a className="list-row" href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
         github
-        <LinkIcon />
+        <LinkIcon style={{ height: 12, width: 12 }} />
       </a>
 
       <a
@@ -142,7 +94,7 @@ const Info = () => {
         rel="noopener noreferrer"
       >
         linkedin
-        <LinkIcon />
+        <LinkIcon style={{ height: 12, width: 12 }} />
       </a>
     </InfoContainer>
   );

@@ -16,12 +16,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
-
-  > img {
-    
-    
-    
-  }
+  padding: var(--spacing-md) 0;
 
   .name {
     h1,
@@ -36,7 +31,8 @@ const ContentContainer = styled.div`
   .info {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-2xs);
+    color: var(--color-text-muted);
 
     div {
       display: flex;
@@ -53,6 +49,7 @@ const ContentContainer = styled.div`
   .resume {
     display: flex;
     width: max-content;
+    align-items: center;
     cursor: pointer;
 
     a {
@@ -62,16 +59,9 @@ const ContentContainer = styled.div`
       line-height: 1;
     }
 
-    svg {
-      transition: var(--transition);
-      transform: translateY(2px);
-      height: 12px;
-    }
-
     &:hover {
       svg {
-        transition: var(--transition);
-        transform: translateY(2px) scale(1.2);
+        transform: scale(1.2);
       }
     }
   }
@@ -80,7 +70,7 @@ const ContentContainer = styled.div`
 const Content = () => {
   return (
     <ContentContainer>
-      <Image src="/static/images/cap.webp" alt="David Budimir" height="65" width="100" />
+      <Image src="/static/images/cap.webp" alt="David Budimir" height="65" width="110" />
 
       <div className="name">
         <h1>david budimir</h1>
@@ -94,7 +84,7 @@ const Content = () => {
           designer <span>(7 years)</span>
         </div>
         <div>
-          saas marketing & seo <span>(8 years)</span>
+          saas marketing<span>(8 years)</span>
         </div>
       </div>
 
@@ -102,7 +92,7 @@ const Content = () => {
         <a href="../static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
           resume
         </a>
-        <LinkIcon />
+        <LinkIcon style={{ transition: 'var(--transition)', height: 12 }} />
       </b>
 
       <Info />

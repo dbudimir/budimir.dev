@@ -135,7 +135,7 @@ const Work = () => {
                       <a href={link.url} target="_blank" rel="noreferrer">
                         {link.linkText}
                       </a>
-                      <LinkIcon />
+                      <LinkIcon style={{ height: 14 }} />
                     </div>
                   ))}
                 </div>

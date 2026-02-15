@@ -86,7 +86,7 @@ const Experience = () => {
                     <a href={job.link.url} target="_blank" rel="noreferrer">
                       {job.link.linkText}
                     </a>
-                    <LinkIcon />
+                    <LinkIcon style={{ height: 14 }} />
                   </div>
                 </div>
               </div>

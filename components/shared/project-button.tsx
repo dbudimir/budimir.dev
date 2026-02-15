@@ -9,7 +9,17 @@ interface ProjectButtonProps {
   onClick: () => void;
 }
 
-const TitleDescription = styled.span<{ $hidden: boolean }>`
+const Title = styled.h4<{ $isOpen: boolean }>`
+  margin: 0;
+  min-width: max-content;
+  font-weight: var(--font-weight-normal);   
+  text-transform: lowercase;
+  pointer-events: none;
+  line-height: 1;
+  ${({ $isOpen }) => $isOpen && 'text-decoration: underline;'}
+`;
+
+const TitleDescription = styled.span<{ $isOpen: boolean }>`
   flex-grow: 1;
   overflow: visible;
   text-transform: lowercase;
@@ -19,7 +29,8 @@ const TitleDescription = styled.span<{ $hidden: boolean }>`
   font-size: var(--font-size-xs);
   -webkit-text-size-adjust: none;
   pointer-events: none;
-  ${({ $hidden }) => $hidden && 'display: none;'}
+  ${({ $isOpen }) => $isOpen && 'display: none;'}
+  line-height: 1;
 `;
 
 const chevronBounce = keyframes`
@@ -30,7 +41,7 @@ const chevronBounce = keyframes`
 
 const StyledButton = styled.button<{ $isOpen: boolean }>`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   min-height: 20px;
   gap: var(--spacing-xs);
   background: none;
@@ -40,34 +51,21 @@ const StyledButton = styled.button<{ $isOpen: boolean }>`
   text-align: left;
   width: 100%;
 
+
   ${({ $isOpen }) =>
     $isOpen &&
     css`
       transition: all 0.25s ease-out;
-
-      h4 {
-        font-weight: var(--font-weight-bold);
-      }
     `}
 
-  h4 {
-    margin: 0;
-    min-width: max-content;
-    font-weight: var(--font-weight-normal);
-    text-transform: lowercase;
-    pointer-events: none;
-  }
-
   svg {
-    pointer-events: none;
     transform: rotate(180deg) translateY(-1px);
-    height: 16px;
   }
 
   &:hover {
     cursor: pointer;
 
-    h4 {
+    ${Title} {
       text-decoration: underline;
     }
 
@@ -87,9 +85,9 @@ const StyledButton = styled.button<{ $isOpen: boolean }>`
 
 const ProjectButton = ({ title, description, isOpen, onClick }: ProjectButtonProps) => (
   <StyledButton type="button" onClick={onClick} $isOpen={isOpen}>
-    <h4>{title}</h4>
-    <TitleDescription $hidden={isOpen}>{description}</TitleDescription>
-    {isOpen && <ChevronIcon />}
+    <Title $isOpen={isOpen}>{title}</Title>
+    <TitleDescription $isOpen={isOpen}>{description}</TitleDescription>
+    {isOpen && <ChevronIcon style={{ pointerEvents: 'none', height: 16 }} />}
   </StyledButton>
 );
 

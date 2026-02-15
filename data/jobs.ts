@@ -4,7 +4,7 @@ export const jobs: Job[] = [
   {
     company: 'Bilt',
     role: 'Software Engineer',
-    location: 'New York, NY // Remote',
+    location: 'New York, NY',
     dates: '01.2025 – Present',
     desc: 'As a full-stack engineer shipping across web and mobile, I work on complex features and internal tooling to keep our teams moving.',
     bullets: [

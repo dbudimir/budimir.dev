@@ -104,10 +104,6 @@ const SectionContainer = styled.div`
             a {
               text-decoration: none;
             }
-
-            svg {
-              height: 14px;
-            }
           }
         }
       }
