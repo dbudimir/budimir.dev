@@ -1,13 +1,11 @@
-import { useRef, createRef } from "react";
-import Image from "next/image";
-import YouTube from "react-youtube";
-
-import LinkIcon from "../icons/link.jsx";
-import data from "../../data/projects.js";
-import { jobs } from "../../data/jobs.js";
-
-import styled from "styled-components";
-import Chevron from "../icons/chevron.jsx";
+import Image from 'next/image';
+import { useState } from 'react';
+import YouTube from 'react-youtube';
+import styled from 'styled-components';
+import { jobs } from '../../data/jobs.js';
+import data from '../../data/projects.js';
+import ChevronIcon from '../icons/chevron.jsx';
+import LinkIcon from '../icons/link.jsx';
 
 const BodyContentContainer = styled.div`
   display: flex;
@@ -22,12 +20,12 @@ const BodyContentContainer = styled.div`
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-end;
-    margin-bottom: 12px;
+    margin-bottom: var(--spacing-md);
     line-height: 1;
 
     b {
-      border-bottom: 6px solid rgb(255, 231, 161);
-      border-left: 6px solid rgb(255, 231, 161);
+      border-bottom: 6px solid var(--color-accent);
+      border-left: 6px solid var(--color-accent);
     }
   }
 
@@ -35,10 +33,10 @@ const BodyContentContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 24px;
+    margin-bottom: var(--spacing-xl);
 
     @media screen and (max-width: 768px) {
-      gap: 8px;
+      gap: var(--spacing-sm);
     }
 
     .project {
@@ -50,6 +48,7 @@ const BodyContentContainer = styled.div`
       :not(.open) {
         .project-title {
           transition: all 0.25s ease-out;
+
           svg {
             display: none;
           }
@@ -61,11 +60,11 @@ const BodyContentContainer = styled.div`
           transition: all 0.25s ease-out;
 
           :not(#project0) {
-            margin-top: 12px;
+            margin-top: var(--spacing-md);
           }
 
           h4 {
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
           }
 
           .title-description {
@@ -74,35 +73,40 @@ const BodyContentContainer = styled.div`
         }
 
         .project-content {
-          margin: 0px 0 24px;
+          margin: 0 0 var(--spacing-xl);
           max-height: 800px;
-          transition: all 0.35s ease-out;
+          transition: var(--transition-slow);
         }
       }
 
       .project-title {
         display: flex;
         align-items: center;
-        margin-bottom: 4px;
-        gap: 4px;
+        margin-bottom: var(--spacing-xs);
+        gap: var(--spacing-xs);
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        text-align: left;
+        width: 100%;
 
         h4 {
           margin: 0;
           min-width: max-content;
-          font-weight: 400;
+          font-weight: var(--font-weight-normal);
           text-transform: lowercase;
           pointer-events: none;
         }
 
         span {
           flex-grow: 1;
-          overflow: hidden;
+          overflow: visible;
           text-transform: lowercase;
           text-overflow: ellipsis;
           white-space: nowrap;
-          overflow: visible;
-          color: #b0aeae;
-          font-size: 12px;
+          color: var(--color-gray);
+          font-size: var(--font-size-xs);
           -webkit-text-size-adjust: none;
           pointer-events: none;
         }
@@ -133,18 +137,18 @@ const BodyContentContainer = styled.div`
         overflow: hidden;
 
         .description {
-          margin: 12px 0;
+          margin: var(--spacing-md) 0;
           font-size: 16px;
           max-width: 600px;
         }
 
         .bullets {
-          margin: 0 0 8px 0px;
+          margin: 0 0 var(--spacing-sm) 0;
           font-size: 14px;
           max-width: 600px;
           display: flex;
           align-items: flex-start;
-          gap: 12px;
+          gap: var(--spacing-md);
 
           span {
             font-size: 10px;
@@ -153,23 +157,22 @@ const BodyContentContainer = styled.div`
         }
 
         .stack {
-          margin: 18px 0 0;
+          margin: var(--spacing-lg) 0 0;
           width: 100%;
           display: flex;
           gap: 6px;
           flex-wrap: wrap;
           font-size: 14px;
-          flex-wrap: wrap;
           max-width: 600px;
 
           b {
-            font-weight: 400;
+            font-weight: var(--font-weight-normal);
           }
 
           span {
             border: 1px solid gray;
             padding: 2px 4px;
-            font-size: 12px;
+            font-size: var(--font-size-xs);
             line-height: 1;
             border-radius: 4px;
             color: gray;
@@ -177,11 +180,11 @@ const BodyContentContainer = styled.div`
         }
 
         .tag-row {
-          margin: 18px 0 0;
+          margin: var(--spacing-lg) 0 0;
           width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: var(--spacing-sm);
           flex-wrap: wrap;
           font-size: 14px;
           max-width: 600px;
@@ -218,12 +221,12 @@ const BodyContentContainer = styled.div`
           display: flex;
           gap: 6px;
           overflow-x: scroll;
-          margin: 24px 0 0 0;
-          padding-bottom: 12px;
+          margin: var(--spacing-xl) 0 0 0;
+          padding-bottom: var(--spacing-md);
 
           > * {
             margin-left: 10px;
-            border: 2px solid #eeeef1;
+            border: 2px solid var(--color-border);
             border-radius: 20px;
             max-height: 250px;
 
@@ -232,21 +235,18 @@ const BodyContentContainer = styled.div`
             }
           }
 
-          /* width */
           ::-webkit-scrollbar {
             height: 2px;
             border-radius: 12px;
           }
 
-          /* Track */
           ::-webkit-scrollbar-track {
-            background: #ffffff;
+            background: var(--color-background);
             border-radius: 12px;
           }
 
-          /* Handle */
           ::-webkit-scrollbar-thumb {
-            background: rgb(255, 231, 161);
+            background: var(--color-accent);
             border-radius: 12px;
           }
         }
@@ -254,212 +254,181 @@ const BodyContentContainer = styled.div`
         .spacer {
           height: 2px;
           width: 25%;
-          background-color: #454545;
-          margin: 24px 0;
+          background-color: var(--color-text-muted);
+          margin: var(--spacing-xl) 0;
         }
       }
     }
   }
 `;
 
-const BodyContent = (props) => {
-  const projectRefs = useRef([null]);
-  const jobRefs = useRef([null]);
+// Video component to reduce repetition
+const VideoMedia = ({ videoId }) => {
+  if (videoId === 'squad') {
+    return (
+      <video autoPlay loop muted playsInline preload="auto">
+        <source src="../../static/images/squad-mini-demo.mp4" type="video/mp4" />
+      </video>
+    );
+  }
 
-  const onProjectClick = (e, type) => {
-    e.preventDefault();
+  if (videoId === 'greywing') {
+    return (
+      <video autoPlay loop muted playsInline preload="auto">
+        <source src="../../static/images/grey-wing-ipad-demo.mp4" type="video/mp4" />
+      </video>
+    );
+  }
 
-    const id = e.target.id.slice(-1);
-    const selectedItem =
-      type === "project"
-        ? projectRefs.current[id].current
-        : jobRefs.current[id].current;
+  if (videoId) {
+    return (
+      <YouTube
+        videoId={videoId}
+        className="video"
+        opts={{
+          height: '240',
+          width: '420',
+          playerVars: { autoplay: 0, showinfo: 0 },
+        }}
+      />
+    );
+  }
 
-    if (selectedItem.classList.contains("open")) {
-      selectedItem.classList.remove("open");
-    } else {
-      selectedItem.classList.add("open");
-    }
+  return null;
+};
+
+const BodyContent = () => {
+  const [openJobs, setOpenJobs] = useState(new Set());
+  const [openProjects, setOpenProjects] = useState(new Set());
+
+  const toggleJob = index => {
+    setOpenJobs(prev => {
+      const next = new Set(prev);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
+      return next;
+    });
+  };
+
+  const toggleProject = index => {
+    setOpenProjects(prev => {
+      const next = new Set(prev);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
+      return next;
+    });
   };
 
   return (
     <BodyContentContainer>
       <div className="spacer" />
+
+      {/* Experience Section */}
       <div className="cover">
         <b>experience</b>
       </div>
       <div className="content">
-        {jobs.map((job, i) => {
-          jobRefs.current[i] = jobRefs.current[i] || createRef();
+        {jobs.map((job, i) => (
+          <div key={job.company} className={`project ${openJobs.has(i) ? 'open' : ''}`}>
+            <button type="button" onClick={() => toggleJob(i)} className="project-title">
+              <h4>
+                {job.company} {job.companySubTitle}
+              </h4>
+              <span className="title-description">{job.role}</span>
+              <ChevronIcon />
+            </button>
 
-          return (
-            <div key={`job${i}`} ref={jobRefs.current[i]} className="project">
-              <div
-                onClick={(e) => onProjectClick(e, "job")}
-                id={`project${i}`}
-                className="project-title "
-              >
-                <h4>
-                  {job.company} {job.companySubTitle}
-                </h4>
-                <span className="title-description">{job.role}</span>
-                <Chevron className="chevron" />
-              </div>
-              <div className="project-content">
-                <p className="description">{job.desc}</p>
-                {job.bullets &&
-                  job.bullets.map((bullet, i) => (
-                    <p className="bullets" key={i}>
-                      <span>→</span> {bullet}
-                    </p>
+            <div className="project-content">
+              <p className="description">{job.desc}</p>
+
+              {job.bullets?.map(bullet => (
+                <p className="bullets" key={bullet}>
+                  <span>→</span> {bullet}
+                </p>
+              ))}
+
+              {job.tags?.length > 0 && (
+                <div className="tags stack">
+                  {job.tags.map(tag => (
+                    <span key={tag}>{tag}</span>
                   ))}
+                </div>
+              )}
 
-                {job.tags?.length && (
-                  <div className="tags stack">
-                    {
-                      // Tags
-                      job.tags.map((tag, index) => (
-                        <span key={index}>{tag}</span>
-                      ))
-                    }
-                  </div>
-                )}
-
-                <div className="tag-row">
-                  <div className="tags">
-                    <span className="location">{job.location}</span>
-                    <span className="dates">{job.dates}</span>
-                  </div>
-
-                  <div className="links">
-                    <div className="link">
-                      <a href={job.link.url} target="_blank" rel="noreferrer">
-                        {job.link.linkText}
-                      </a>
-                      <LinkIcon />
-                    </div>
+              <div className="tag-row">
+                <div className="tags">
+                  <span className="location">{job.location}</span>
+                  <span className="dates">{job.dates}</span>
+                </div>
+                <div className="links">
+                  <div className="link">
+                    <a href={job.link.url} target="_blank" rel="noreferrer">
+                      {job.link.linkText}
+                    </a>
+                    <LinkIcon />
                   </div>
                 </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
+
+      {/* Work Samples Section */}
       <div className="cover">
         <b>work samples</b>
       </div>
       <div className="content">
-        {data.map((project, i) => {
-          projectRefs.current[i] = projectRefs.current[i] || createRef();
+        {data.map((project, i) => (
+          <div key={project.h3} className={`project ${openProjects.has(i) ? 'open' : ''}`}>
+            <button type="button" onClick={() => toggleProject(i)} className="project-title">
+              <h4>{project.h3}</h4>
+              <span className="title-description">{project.description[0]}</span>
+              <ChevronIcon />
+            </button>
 
-          return (
-            <div
-              key={`project${i}`}
-              ref={projectRefs.current[i]}
-              className="project"
-            >
-              <div
-                onClick={(e) => onProjectClick(e, "project")}
-                id={`project${i}`}
-                className="project-title"
-              >
-                <h4>{project.h3}</h4>
-                <span className="title-description">
-                  {project.description[0]}
-                </span>
-                <Chevron />
+            <div className="project-content">
+              <p className="description">
+                →{' '}
+                {project.description.map(line => (
+                  <span key={line}>{line} </span>
+                ))}
+              </p>
+
+              <div className="image-row">
+                <VideoMedia videoId={project.videoId} />
+                {project.images.map(image => (
+                  <Image key={image.alt} src={image.src} alt={image.alt} height={image.height} width={image.width} />
+                ))}
               </div>
 
-              <div className="project-content">
-                {/* Description */}
-                <p className="description">
-                  →{" "}
-                  {project.description.map((line, i) => (
-                    <span key={i}>{line}</span>
+              <div className="tags stack">
+                {project.tags.map(tag => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+
+              <div className="tag-row">
+                <div className="links">
+                  {project.links.map(link => (
+                    <div className="link" key={link.url}>
+                      <a href={link.url} target="_blank" rel="noreferrer">
+                        {link.linkText}
+                      </a>
+                      <LinkIcon />
+                    </div>
                   ))}
-                </p>
-
-                {/* Images */}
-                <div className="image-row">
-                  {
-                    // MP4 video type
-                    project.videoId === "squad" && (
-                      <video autoPlay loop muted playsInline preload="auto">
-                        <source
-                          src="../../static/images/squad-mini-demo.mp4"
-                          type="video/mp4"
-                        />
-                      </video>
-                    )
-                  }
-                  {
-                    // MP4 video type
-                    project.videoId === "greywing" && (
-                      <video autoPlay loop muted playsInline preload="auto">
-                        <source
-                          src="../../static/images/grey-wing-ipad-demo.mp4"
-                          type="video/mp4"
-                        />
-                      </video>
-                    )
-                  }
-                  {
-                    // Video if we have it
-                    project.videoId &&
-                      project.videoId !== "squad" &&
-                      project.videoId !== "greywing" && (
-                        <YouTube
-                          videoId={project.videoId}
-                          className="video"
-                          opts={{
-                            height: "240",
-                            width: "420",
-                            playerVars: { autoplay: 0, showinfo: 0 },
-                          }}
-                        />
-                      )
-                  }
-                  {
-                    // All images
-                    project.images.map((image) => (
-                      <Image
-                        key={image.alt}
-                        src={image.src}
-                        alt={image.alt}
-                        height={image.height}
-                        width={image.width}
-                      />
-                    ))
-                  }
                 </div>
-
-                <div className="tags stack">
-                  {
-                    // Tags
-                    project.tags.map((tag, index) => (
-                      <span key={index}>{tag}</span>
-                    ))
-                  }
-                </div>
-
-                <div className="tag-row">
-                  {/* Links */}
-                  <div className="links">
-                    {project.links.map((link, index) => (
-                      <div className="link" key={index}>
-                        <a href={link.url} target="_blank" rel="noreferrer">
-                          {link.linkText}
-                        </a>
-                        <LinkIcon />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/* <div className="spacer"></div> */}
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </BodyContentContainer>
   );

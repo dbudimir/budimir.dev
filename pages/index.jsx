@@ -1,31 +1,22 @@
-import Head from "next/head";
-
-import styled from "styled-components";
-
-// Components
-import SidebarContent from "../components/home/sidebar-content.jsx";
-import BodyContent from "../components/home/body-content.jsx";
+import Head from 'next/head';
+import styled from 'styled-components';
+import BodyContent from '../components/home/body-content.jsx';
+import SidebarContent from '../components/home/sidebar-content.jsx';
 
 const Container = styled.div`
   scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   overflow: hidden;
-  padding: 18px;
-  //
+  padding: var(--spacing-lg);
+
   --offset: 3px;
   position: relative;
   box-sizing: border-box;
 
   &:before {
-    content: "";
-    background: conic-gradient(
-      transparent 270deg,
-      rgb(255, 231, 161),
-      transparent
-    );
+    content: '';
+    background: conic-gradient(transparent 270deg, var(--color-accent), transparent);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -35,10 +26,9 @@ const Container = styled.div`
     animation: rotate 10s linear infinite;
   }
 
-  /* Overlay */
   &:after {
-    content: "";
-    background: #ffffff;
+    content: '';
+    background: var(--color-background);
     border-radius: inherit;
     position: absolute;
     inset: var(--offset);
@@ -48,7 +38,6 @@ const Container = styled.div`
     from {
       transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
     }
-
     to {
       transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
     }
@@ -84,27 +73,18 @@ const Container = styled.div`
   }
 `;
 
-const Index = (props) => {
+const Index = () => {
   return (
     <Container>
       <Head>
         <title>David Budimir</title>
-        <meta
-          name="description"
-          content="David Budimir is a software engineer, designer, and SaaS marketing expert."
-        />
+        <meta name="description" content="David Budimir is a software engineer, designer, and SaaS marketing expert." />
         <meta
           name="og:description"
           content="David Budimir is a software engineer, designer, and SaaS marketing expert."
         />
-        <meta
-          property="og:image"
-          content="https://www.budimir.dev/static/images/og-image.png"
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.budimir.dev/static/images/og-image.png"
-        />
+        <meta property="og:image" content="https://www.budimir.dev/static/images/og-image.png" />
+        <meta name="twitter:image" content="https://www.budimir.dev/static/images/og-image.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -1,26 +1,24 @@
-const dayjs = require("dayjs");
-const relativeTime = require("dayjs/plugin/relativeTime");
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 dayjs.extend(relativeTime);
 
-import { useState, useRef } from "react";
-import Image from "next/image";
-
-import LinkIcon from "../../components/icons/link.jsx";
-import CopyIcon from "../../components/icons/copy.jsx";
-import ChevronIcon from "../../components/icons/chevron.jsx";
-
-import styled from "styled-components";
+import Image from 'next/image';
+import { useState } from 'react';
+import styled from 'styled-components';
+import ChevronIcon from '../icons/chevron.jsx';
+import CopyIcon from '../icons/copy.jsx';
+import LinkIcon from '../icons/link.jsx';
 
 const SidebarContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
 
   > img {
-    background-color: #454545;
-    padding: 12px;
+    background-color: var(--color-text-muted);
+    padding: var(--spacing-md);
     margin-bottom: 6px;
   }
 
@@ -37,16 +35,16 @@ const SidebarContentContainer = styled.div`
   .info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--spacing-xs);
 
     div {
       display: flex;
       align-items: first baseline;
-      gap: 4px;
+      gap: var(--spacing-xs);
 
       span {
-        color: #454545;
-        font-size: 12px;
+        color: var(--color-text-muted);
+        font-size: var(--font-size-xs);
       }
     }
   }
@@ -59,21 +57,21 @@ const SidebarContentContainer = styled.div`
     a {
       display: flex;
       text-decoration: none;
-      color: #000000;
-      border-bottom: 6px solid rgb(255, 231, 161);
-      border-left: 6px solid rgb(255, 231, 161);
+      color: var(--color-black);
+      border-bottom: 6px solid var(--color-accent);
+      border-left: 6px solid var(--color-accent);
       line-height: 1;
     }
 
     svg {
-      transition: ease-in-out 0.2s;
+      transition: var(--transition);
       transform: translateY(2px);
       height: 12px;
     }
 
     &:hover {
       svg {
-        transition: ease-in-out 0.2s;
+        transition: var(--transition);
         transform: translateY(2px) scale(1.2);
       }
     }
@@ -82,18 +80,18 @@ const SidebarContentContainer = styled.div`
   .contact {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--spacing-xs);
 
     @media screen and (max-width: 768px) {
-      gap: 8px;
+      gap: var(--spacing-sm);
     }
 
     .contact-info {
       display: flex;
       width: max-content;
-      border-bottom: 6px solid rgb(255, 231, 161);
-      border-left: 6px solid rgb(255, 231, 161);
-      margin-bottom: 8px;
+      border-bottom: 6px solid var(--color-accent);
+      border-left: 6px solid var(--color-accent);
+      margin-bottom: var(--spacing-sm);
       line-height: 1;
     }
 
@@ -101,7 +99,7 @@ const SidebarContentContainer = styled.div`
       display: flex;
       align-items: center;
       text-decoration: none;
-      color: #000000;
+      color: var(--color-black);
       cursor: pointer;
       width: max-content;
 
@@ -123,10 +121,15 @@ const SidebarContentContainer = styled.div`
       align-items: flex-start;
       cursor: pointer;
 
-      div {
+      .email-toggle {
         display: flex;
         align-items: center;
         gap: 6px;
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
 
         &:hover {
           svg {
@@ -142,12 +145,17 @@ const SidebarContentContainer = styled.div`
       }
 
       .show-email {
-        color: #454545;
+        color: var(--color-text-muted);
         font-size: 14px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 4px;
+        gap: var(--spacing-xs);
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
 
         svg {
           width: 14px;
@@ -162,7 +170,7 @@ const SidebarContentContainer = styled.div`
       }
 
       &.email-visible {
-        div {
+        .email-toggle {
           svg {
             transform: rotate(180deg);
           }
@@ -172,95 +180,70 @@ const SidebarContentContainer = styled.div`
   }
 `;
 
-const SidebarContent = (props) => {
-  const emailAddress = useRef(null);
-
+const SidebarContent = () => {
   const [showEmail, setShowEmail] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
 
   const copyEmail = () => {
     setShowCopied(true);
-    navigator.clipboard.writeText("dav.budimir@gmail.com");
+    navigator.clipboard.writeText('dav.budimir@gmail.com');
     setTimeout(() => {
       setShowCopied(false);
     }, 1500);
   };
 
   return (
-    <>
-      <SidebarContentContainer className="content">
-        <Image
-          src="/static/images/lemon.png"
-          alt="David Budimir"
-          height="100"
-          width="100"
-        />
-        <div className="name">
-          <h1>david budimir</h1>
+    <SidebarContentContainer className="content">
+      <Image src="/static/images/lemon.png" alt="David Budimir" height="100" width="100" />
+
+      <div className="name">
+        <h1>david budimir</h1>
+      </div>
+
+      <div className="info">
+        <div>
+          software engineer <span>({dayjs('2019-05-01').fromNow(true)})</span>
         </div>
-
-        <div className="info">
-          <div>
-            software engineer <span>({dayjs("2019-05-01").fromNow(true)})</span>
-          </div>
-          <div>
-            designer <span>(7 years)</span>
-          </div>
-          <div>
-            saas marketing & seo <span>(8 years)</span>
-          </div>
+        <div>
+          designer <span>(7 years)</span>
         </div>
+        <div>
+          saas marketing & seo <span>(8 years)</span>
+        </div>
+      </div>
 
-        <b className="resume">
-          <a
-            href="../static/pdfs/david-budimir-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            resume
-          </a>
+      <b className="resume">
+        <a href="../static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
+          resume
+        </a>
+        <LinkIcon />
+      </b>
 
+      <div className="contact">
+        <b className="contact-info">contact info</b>
+
+        <span className={showEmail ? 'email-visible' : ''}>
+          <button type="button" className="email-toggle" onClick={() => setShowEmail(!showEmail)}>
+            email <ChevronIcon />
+          </button>
+          {showEmail && (
+            <button type="button" onClick={copyEmail} className="show-email">
+              dav.budimir@gmail.com <CopyIcon />
+              {showCopied && <div className="copied-indicator">Copied !!!</div>}
+            </button>
+          )}
+        </span>
+
+        <a href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
+          github
           <LinkIcon />
-        </b>
-
-        <div className="contact">
-          <b className="contact-info">contact info</b>
-          <span className={`${showEmail ? "email-visible" : ""}`}>
-            <div onClick={() => setShowEmail(!showEmail)}>
-              email <ChevronIcon />
-            </div>
-            {showEmail && (
-              <span
-                ref={emailAddress}
-                onClick={copyEmail}
-                className="show-email"
-              >
-                dav.budimir@gmail.com <CopyIcon />
-                {showCopied && (
-                  <div className="copied-indicator">Copied !!!</div>
-                )}
-              </span>
-            )}
-          </span>
-          <a
-            href="https://github.com/dbudimir"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            github
-            <LinkIcon />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/davidbudimir/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            linkedin
-            <LinkIcon />
-          </a>
-        </div>
-      </SidebarContentContainer>
-    </>
+        </a>
+        <a href="https://www.linkedin.com/in/davidbudimir/" target="_blank" rel="noopener noreferrer">
+          linkedin
+          <LinkIcon />
+        </a>
+      </div>
+    </SidebarContentContainer>
   );
 };
 

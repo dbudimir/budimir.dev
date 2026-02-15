@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import TagManager from "react-gtm-module";
-import { Poppins } from "next/font/google";
-import "../styles/global.scss";
+import { Poppins } from 'next/font/google';
+import { useEffect } from 'react';
+import TagManager from 'react-gtm-module';
+import '../styles/global.scss';
 
 const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  display: "swap",
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
 });
 
-// Tag Manager
-const tagManagerArgs = { gtmId: "GTM-5KZP39S" };
+const tagManagerArgs = { gtmId: 'GTM-5KZP39S' };
 
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -19,14 +19,9 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <>
-      <style jsx global>{`
-        html {
-          font-family: ${poppins.style.fontFamily};
-        }
-      `}</style>
+    <div className={poppins.className}>
       <Component {...pageProps} />
-    </>
+    </div>
   );
 };
 
