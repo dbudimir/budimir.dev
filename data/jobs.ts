@@ -6,11 +6,12 @@ export const jobs: Job[] = [
     role: 'Software Engineer',
     location: 'New York, NY // Remote',
     dates: '01.2025 – Present',
-    desc: 'As a full-stack engineer shipping across web and mobile, I work on complex features and build tooling to keep the teams moving.',
+    desc: 'As a full-stack engineer shipping across web and mobile, I work on complex features and internal tooling to keep our teams moving.',
     bullets: [
-      'Owned the lease application flow on the frontend — a highly dynamic, multi-service integration with a new frictionless login experience that reusable for teams across the company.',
-      'Built an AI-powered e2e testing framework with Stagehand and Playwright, plus a mock partner app that became a team-wide tool for testing complex auth and SSO flows.',
-      'Led the "my home" page redesign and autopay migration, managing feature rollouts and shipping cross-platform changes on tight deadlines.',
+      'Owned the "lease application" project on the frontend — a highly dynamic, multi-service integration with a new frictionless login experience that was reusable for teams across the company.',
+      'Built an AI-powered e2e testing framework with Stagehand and Playwright',
+      'Created a "mock partner app"; an iframe wrapper environment that we used to develop and test complex auth and SSO flows.',
+      'Led the "My Home" page redesign and autopay migration, managing feature rollouts and shipping cross-platform changes on tight deadlines.',
     ],
     tags: ['next.js', 'typescript', 'cursor', 'claude code', 'gcp', 'browserbase'],
     link: {
