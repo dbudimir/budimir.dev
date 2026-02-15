@@ -1,3 +1,5 @@
+'use client';
+
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
@@ -6,9 +8,9 @@ dayjs.extend(relativeTime);
 import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
-import ChevronIcon from '../icons/chevron.jsx';
-import CopyIcon from '../icons/copy.jsx';
-import LinkIcon from '../icons/link.jsx';
+import ChevronIcon from '../icons/chevron';
+import CopyIcon from '../icons/copy';
+import LinkIcon from '../icons/link';
 
 const SidebarContentContainer = styled.div`
   display: flex;
@@ -80,7 +82,7 @@ const SidebarContentContainer = styled.div`
   .contact {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    /* gap: var(--spacing-xs); */
 
     @media screen and (max-width: 768px) {
       gap: var(--spacing-sm);

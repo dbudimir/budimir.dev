@@ -1,11 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 import YouTube from 'react-youtube';
 import styled from 'styled-components';
-import { jobs } from '../../data/jobs.js';
-import data from '../../data/projects.js';
-import ChevronIcon from '../icons/chevron.jsx';
-import LinkIcon from '../icons/link.jsx';
+import { jobs } from '../../data/jobs';
+import projects from '../../data/projects';
+import type { Project } from '../../types';
+import ChevronIcon from '../icons/chevron';
+import LinkIcon from '../icons/link';
 
 const BodyContentContainer = styled.div`
   display: flex;
@@ -262,8 +265,12 @@ const BodyContentContainer = styled.div`
   }
 `;
 
+interface VideoMediaProps {
+  videoId: Project['videoId'];
+}
+
 // Video component to reduce repetition
-const VideoMedia = ({ videoId }) => {
+const VideoMedia = ({ videoId }: VideoMediaProps) => {
   if (videoId === 'squad') {
     return (
       <video autoPlay loop muted playsInline preload="auto">
@@ -298,10 +305,10 @@ const VideoMedia = ({ videoId }) => {
 };
 
 const BodyContent = () => {
-  const [openJobs, setOpenJobs] = useState(new Set());
-  const [openProjects, setOpenProjects] = useState(new Set());
+  const [openJobs, setOpenJobs] = useState<Set<number>>(new Set());
+  const [openProjects, setOpenProjects] = useState<Set<number>>(new Set());
 
-  const toggleJob = index => {
+  const toggleJob = (index: number) => {
     setOpenJobs(prev => {
       const next = new Set(prev);
       if (next.has(index)) {
@@ -313,7 +320,7 @@ const BodyContent = () => {
     });
   };
 
-  const toggleProject = index => {
+  const toggleProject = (index: number) => {
     setOpenProjects(prev => {
       const next = new Set(prev);
       if (next.has(index)) {
@@ -353,7 +360,7 @@ const BodyContent = () => {
                 </p>
               ))}
 
-              {job.tags?.length > 0 && (
+              {job.tags && job.tags.length > 0 && (
                 <div className="tags stack">
                   {job.tags.map(tag => (
                     <span key={tag}>{tag}</span>
@@ -385,7 +392,7 @@ const BodyContent = () => {
         <b>work samples</b>
       </div>
       <div className="content">
-        {data.map((project, i) => (
+        {projects.map((project, i) => (
           <div key={project.h3} className={`project ${openProjects.has(i) ? 'open' : ''}`}>
             <button type="button" onClick={() => toggleProject(i)} className="project-title">
               <h4>{project.h3}</h4>

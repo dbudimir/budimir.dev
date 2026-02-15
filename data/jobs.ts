@@ -1,4 +1,6 @@
-export const jobs = [
+import type { Job } from '../types';
+
+export const jobs: Job[] = [
   {
     company: 'Best Egg',
     role: 'Lead Software Engineer II',
