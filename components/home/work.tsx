@@ -10,31 +10,61 @@ import LinkIcon from '../icons/link';
 import ProjectButton from '../shared/project-button';
 import SectionContainer from './section.styles';
 
+/** Fixed height matches most project thumbs (242 in data); keeps every slot the same visual size. */
+const THUMB_H = 242;
+
+const ThumbSlot = styled.div`
+  flex-shrink: 0;
+  box-sizing: border-box;
+  height: ${THUMB_H}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
+
+  /* next/image wraps the img in a span; stretch it so the img can use height: 100% */
+  & > span {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 100% !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  img {
+    display: block;
+    width: auto !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: contain;
+  }
+
+  video,
+  iframe {
+    max-height: 100%;
+    border-radius: 20px;
+  }
+`;
+
 const WorkContainer = styled(SectionContainer)`
   .content .project .project-content {
     .image-row {
       width: 100%;
       display: flex;
+      align-items: stretch;
       gap: 6px;
       overflow-x: auto;
       margin: var(--spacing-xl) 0 0 0;
       padding-bottom: var(--spacing-md);
+      padding-left: 10px;
       scrollbar-width: none; /* Firefox */
       -ms-overflow-style: none; /* IE/Edge */
 
       &::-webkit-scrollbar {
         display: none; /* Chrome/Safari/Opera */
-      }
-
-      > * {
-        margin-left: 10px;
-        border: 2px solid var(--color-border);
-        border-radius: 20px;
-        max-height: 250px;
-
-        iframe {
-          border-radius: 20px;
-        }
       }
     }
   }
@@ -116,9 +146,21 @@ const Work = () => {
               </p>
 
               <div className="image-row">
-                <VideoMedia videoId={project.videoId} />
+                {project.videoId ? (
+                  <ThumbSlot>
+                    <VideoMedia videoId={project.videoId} />
+                  </ThumbSlot>
+                ) : null}
                 {project.images.map(image => (
-                  <Image key={image.alt} src={image.src} alt={image.alt} height={image.height} width={image.width} />
+                  <ThumbSlot key={image.alt}>
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      height={image.height}
+                      width={image.width}
+                      sizes="(max-width: 900px) 70vw, 480px"
+                    />
+                  </ThumbSlot>
                 ))}
               </div>
 

@@ -11,15 +11,16 @@ const ExperienceContainer = styled(SectionContainer)`
   .content .project .project-content {
     .bullets {
       margin: 0 0 var(--spacing-sm) 0;
-      font-size: 14px;
+      font-family: var(--font-geist-sans), system-ui, sans-serif;
+      font-size: var(--font-size-sm);
       max-width: 600px;
       display: flex;
       align-items: flex-start;
       gap: var(--spacing-md);
 
       span {
-        font-size: 10px;
-        transform: translateY(3px);
+        flex-shrink: 0;
+        transform: translateY(2px);
       }
     }
   }

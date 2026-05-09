@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import ChevronIcon from '../icons/chevron';
+import { sectionItemRowText } from './section-item.styles';
 
 interface ProjectButtonProps {
   title: ReactNode;
@@ -12,25 +13,21 @@ interface ProjectButtonProps {
 const Title = styled.h4<{ $isOpen: boolean }>`
   margin: 0;
   min-width: max-content;
-  font-weight: var(--font-weight-normal);   
-  text-transform: lowercase;
+  ${sectionItemRowText}
   pointer-events: none;
-  line-height: 1;
   ${({ $isOpen }) => $isOpen && 'text-decoration: underline;'}
 `;
 
 const TitleDescription = styled.span<{ $isOpen: boolean }>`
+  ${sectionItemRowText}
   flex-grow: 1;
   overflow: visible;
-  text-transform: lowercase;
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--color-gray);
-  font-size: var(--font-size-xs);
   -webkit-text-size-adjust: none;
   pointer-events: none;
   ${({ $isOpen }) => $isOpen && 'display: none;'}
-  line-height: 1;
 `;
 
 const chevronBounce = keyframes`
@@ -41,8 +38,8 @@ const chevronBounce = keyframes`
 
 const StyledButton = styled.button<{ $isOpen: boolean }>`
   display: flex;
-  align-items: flex-end;
-  min-height: 20px;
+  align-items: center;
+  min-height: 1.25em;
   gap: var(--spacing-xs);
   background: none;
   border: none;

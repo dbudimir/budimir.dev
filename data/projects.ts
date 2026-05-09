@@ -16,6 +16,54 @@ export const projects: Project[] = [
     ],
   },
   {
+    h3: 'CUNY Architecture',
+    videoId: null,
+    images: [
+      {
+        src: '/static/images/ctarch-desktop.webp',
+        alt: 'City Tech Architecture website thumbnail',
+        height: 484,
+        width: 860,
+      },
+      {
+        src: '/static/images/ctarch-mobile-thumb.webp',
+        alt: 'City Tech Architecture mobile thumbnail',
+        height: 484,
+        width: 224,
+      },
+    ],
+    description: [
+      'The public website for the Department of Architecture at New York City College of Technology (CUNY): news, events, electives, and student work.',
+      'Built with Next.js and Sanity so faculty can publish updates without touching code, with responsive layouts and optimized imagery from the CMS.',
+    ],
+    tags: ['react', 'next.js', 'sanity.io'],
+    links: [{ linkText: 'ctarch.online', url: 'https://www.ctarch.online/' }],
+  },
+  {
+    h3: 'Projectr',
+    videoId: null,
+    images: [
+      {
+        src: '/static/images/projectr-desktop.webp',
+        alt: 'Projectr website thumbnail',
+        height: 484,
+        width: 860,
+      },
+      {
+        src: '/static/images/projectr-mobile-thumb.webp',
+        alt: 'Projectr mobile thumbnail',
+        height: 484,
+        width: 224,
+      },
+    ],
+    description: [
+      'Projectr is a social platform for film fans to surface demand—through votes and reserved seats—so independent and local theaters can align programming with what audiences actually want.',
+      'It ships as a Next.js web app and React Native clients from a single monorepo, reusing Tamagui-based components across platforms. Supplementary pipelines use AI to transcribe film podcasts and extract film titles and structured, episode-level film intelligence at scale.',
+    ],
+    tags: ['react', 'next.js', 'react native', 'tamagui', 'monorepo', 'ai'],
+    links: [{ linkText: 'projectr.nyc', url: 'https://projectr.nyc/' }],
+  },
+  {
     h3: 'Queen Ballers',
     videoId: null,
     images: [

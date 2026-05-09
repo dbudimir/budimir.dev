@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { sectionContentStackStyles, sectionCoverStyles } from '../shared/section-item.styles';
 
 const SectionContainer = styled.div`
   width: 100%;
@@ -6,24 +7,12 @@ const SectionContainer = styled.div`
   flex-direction: column;
 
   .cover {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-bottom: var(--spacing-md);
-    line-height: 1;
+    ${sectionCoverStyles}
   }
 
   .content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    ${sectionContentStackStyles}
     margin-bottom: var(--spacing-xl);
-
-    @media screen and (max-width: 768px) {
-      gap: var(--spacing-sm);
-    }
 
     .project {
       display: flex;
@@ -47,7 +36,8 @@ const SectionContainer = styled.div`
 
         .description {
           margin: var(--spacing-md) 0;
-          font-size: 16px;
+          font-family: var(--font-geist-sans), system-ui, sans-serif;
+          font-size: var(--font-size-sm);
           max-width: 600px;
         }
 
@@ -57,7 +47,7 @@ const SectionContainer = styled.div`
           display: flex;
           gap: 6px;
           flex-wrap: wrap;
-          font-size: 14px;
+          font-size: var(--font-size-2xs);
           max-width: 600px;
 
           b {
@@ -67,8 +57,8 @@ const SectionContainer = styled.div`
           span {
             border: 1px solid gray;
             padding: 2px 4px;
-            font-size: var(--font-size-xs);
-            line-height: 1;
+            font-size: var(--font-size-2xs);
+            line-height: 1.2;
             border-radius: 4px;
             color: gray;
           }

@@ -33,6 +33,7 @@ const ContentContainer = styled.div`
     flex-direction: column;
     gap: var(--spacing-2xs);
     color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
 
     div {
       display: flex;
@@ -41,7 +42,7 @@ const ContentContainer = styled.div`
 
       span {
         color: var(--color-text-muted);
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-2xs);
       }
     }
   }

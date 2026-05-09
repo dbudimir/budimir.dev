@@ -4,26 +4,22 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import CopyIcon from '../icons/copy';
 import LinkIcon from '../icons/link';
+import { sectionContentStackStyles, sectionCoverStyles, sectionItemRowText } from '../shared/section-item.styles';
 
 const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (max-width: 768px) {
-    gap: var(--spacing-sm);
+  .section-heading {
+    ${sectionCoverStyles}
   }
 
-  .contact-info {
-    display: flex;
-    width: max-content;
-    margin-bottom: var(--spacing-sm);
-    line-height: 1;
+  .section-items {
+    ${sectionContentStackStyles}
   }
 
   .list-row {
+    ${sectionItemRowText}
     display: flex;
     align-items: center;
-    height: 20px;
+    min-height: 1.25em;
     width: max-content;
     text-decoration: none;
     color: var(--color-black);
@@ -31,7 +27,8 @@ const InfoContainer = styled.div`
     background: none;
     border: none;
     padding: 0;
-    font: inherit;
+    /* Avoid font: inherit shorthand — it resets font-size after sectionItemRowText. */
+    font-family: inherit;
     gap: var(--spacing-xs);
 
     &:hover {
@@ -58,6 +55,7 @@ const InfoContainer = styled.div`
       animation: slideReveal 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
       padding: 0 0 0 4px;
       color: var(--color-text-muted);
+      font-size: var(--font-size-2xs);
     }
   }
 `;
@@ -75,27 +73,31 @@ const Info = () => {
 
   return (
     <InfoContainer>
-      <b className="contact-info">contact info</b>
+      <div className="section-heading">
+        <b>contact info</b>
+      </div>
 
-      <button type="button" onClick={copyEmail} className="list-row email-row">
-        email <CopyIcon style={{ width: 12 }} />
-        {showCopied && <div className="copied-indicator">copied dav.budimir@gmail.com </div>}
-      </button>
+      <div className="section-items">
+        <button type="button" onClick={copyEmail} className="list-row email-row">
+          email <CopyIcon style={{ width: 12 }} />
+          {showCopied && <div className="copied-indicator">copied dav.budimir@gmail.com </div>}
+        </button>
 
-      <a className="list-row" href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
-        github
-        <LinkIcon style={{ height: 12, width: 12 }} />
-      </a>
+        <a className="list-row" href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
+          github
+          <LinkIcon style={{ height: 12, width: 12 }} />
+        </a>
 
-      <a
-        className="list-row"
-        href="https://www.linkedin.com/in/davidbudimir/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        linkedin
-        <LinkIcon style={{ height: 12, width: 12 }} />
-      </a>
+        <a
+          className="list-row"
+          href="https://www.linkedin.com/in/davidbudimir/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          linkedin
+          <LinkIcon style={{ height: 12, width: 12 }} />
+        </a>
+      </div>
     </InfoContainer>
   );
 };
