@@ -1,27 +1,58 @@
 'use client';
 
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-
-dayjs.extend(relativeTime);
-
 import Image from 'next/image';
 import styled from 'styled-components';
 import LinkIcon from '../icons/link';
 import Experience from './experience';
 import Frit from './frit';
-import Info from './info';
+import { NormCoreSticker } from './sticker';
 import Work from './work';
+
+const HeroIntro = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+  width: 100%;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0;
+  }
+`;
+
+/** Out of flow on wide layouts so body text aligns to the image width only. */
+const NormCoreStickerSlot = styled.div`
+  flex-shrink: 0;
+
+  @media (min-width: 769px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+`;
 
 const HeroFigure = styled.figure`
   position: relative;
   display: inline-block;
   margin: 0;
-  line-height: 0;
+  flex-shrink: 0;
 
   img {
     position: relative;
     z-index: 1;
+    display: block;
+  }
+`;
+
+const HeroName = styled.div`
+  display: none;
+
+  @media (min-width: 769px) {
     display: block;
   }
 `;
@@ -31,35 +62,6 @@ const ContentContainer = styled.div`
   flex-direction: column;
   gap: var(--spacing-xl);
   padding: var(--spacing-md) 0;
-
-  .name {
-    h1,
-    h3 {
-      margin: 0;
-      width: 100%;
-    }
-
-    line-height: 1;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-2xs);
-    color: var(--color-text-muted);
-    font-size: var(--font-size-xs);
-
-    div {
-      display: flex;
-      align-items: first baseline;
-      gap: var(--spacing-xs);
-
-      span {
-        color: var(--color-text-muted);
-        font-size: var(--font-size-2xs);
-      }
-    }
-  }
 
   .resume {
     display: flex;
@@ -84,39 +86,41 @@ const ContentContainer = styled.div`
 
 const Content = () => {
   return (
-    <ContentContainer>
-      <HeroFigure>
-        <Frit />
-        <Image src="/static/images/cap.webp" alt="David Budimir" height="65" width="110" priority />
-      </HeroFigure>
+    <HeroFigure>
+      <Frit />
+      <ContentContainer>
+        <HeroIntro>
+          {/* <div> */}
+          {/* <Image
+              style={{ marginBottom: '24px' }}
+              src="/static/images/cap.webp"
+              alt="David Budimir"
+              height="45"
+              width="80"
+              priority
+            /> */}
 
-      <div className="name">
-        <h1>david budimir</h1>
-      </div>
+          <HeroName>
+            <h1>david budimir</h1>
+          </HeroName>
+          {/* </div> */}
 
-      <div className="info">
-        <div>
-          software engineer <span>({dayjs('2019-05-01').fromNow(true)})</span>
-        </div>
-        <div>
-          designer <span>(7 years)</span>
-        </div>
-        <div>
-          saas marketing<span>(8 years)</span>
-        </div>
-      </div>
+          <NormCoreStickerSlot>
+            <NormCoreSticker />
+          </NormCoreStickerSlot>
+        </HeroIntro>
 
-      <b className="resume">
-        <a href="../static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
-          resume
-        </a>
-        <LinkIcon style={{ transition: 'var(--transition)', height: 12 }} />
-      </b>
+        <b className="resume">
+          <a href="../static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
+            resume
+            <LinkIcon style={{ transition: 'var(--transition)', height: 12 }} />
+          </a>
+        </b>
 
-      <Info />
-      <Experience />
-      <Work />
-    </ContentContainer>
+        <Experience />
+        <Work />
+      </ContentContainer>
+    </HeroFigure>
   );
 };
 

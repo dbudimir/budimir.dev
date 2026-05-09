@@ -7,6 +7,7 @@ import '../styles/global.scss';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
+  weight: ['400', '700', '800'],
   display: 'swap',
 });
 

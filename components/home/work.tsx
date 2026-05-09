@@ -21,7 +21,7 @@ const ThumbSlot = styled.div`
   align-items: center;
   justify-content: center;
   border: 2px solid var(--color-border);
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
 
   /* next/image wraps the img in a span; stretch it so the img can use height: 100% */
@@ -45,7 +45,7 @@ const ThumbSlot = styled.div`
   video,
   iframe {
     max-height: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 `;
 

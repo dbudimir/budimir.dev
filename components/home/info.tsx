@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styled from 'styled-components';
+import { CONTACT_EMAIL, CONTACT_EMAIL_COPY_FEEDBACK_MS } from '../../lib/contact';
 import CopyIcon from '../icons/copy';
 import LinkIcon from '../icons/link';
 import { sectionContentStackStyles, sectionCoverStyles, sectionItemRowText } from '../shared/section-item.styles';
@@ -65,10 +66,10 @@ const Info = () => {
 
   const copyEmail = () => {
     setShowCopied(true);
-    navigator.clipboard.writeText('dav.budimir@gmail.com');
-    setTimeout(() => {
+    void navigator.clipboard.writeText(CONTACT_EMAIL);
+    window.setTimeout(() => {
       setShowCopied(false);
-    }, 2500);
+    }, CONTACT_EMAIL_COPY_FEEDBACK_MS);
   };
 
   return (
@@ -80,7 +81,7 @@ const Info = () => {
       <div className="section-items">
         <button type="button" onClick={copyEmail} className="list-row email-row">
           email <CopyIcon style={{ width: 12 }} />
-          {showCopied && <div className="copied-indicator">copied dav.budimir@gmail.com </div>}
+          {showCopied && <div className="copied-indicator">copied {CONTACT_EMAIL} </div>}
         </button>
 
         <a className="list-row" href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
