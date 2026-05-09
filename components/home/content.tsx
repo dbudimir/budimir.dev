@@ -9,8 +9,22 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import LinkIcon from '../icons/link';
 import Experience from './experience';
+import Frit from './frit';
 import Info from './info';
 import Work from './work';
+
+const HeroFigure = styled.figure`
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  line-height: 0;
+
+  img {
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+`;
 
 const ContentContainer = styled.div`
   display: flex;
@@ -71,7 +85,10 @@ const ContentContainer = styled.div`
 const Content = () => {
   return (
     <ContentContainer>
-      <Image src="/static/images/cap.webp" alt="David Budimir" height="65" width="110" />
+      <HeroFigure>
+        <Frit />
+        <Image src="/static/images/cap.webp" alt="David Budimir" height="65" width="110" priority />
+      </HeroFigure>
 
       <div className="name">
         <h1>david budimir</h1>
