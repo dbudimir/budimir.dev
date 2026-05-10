@@ -11,7 +11,14 @@ interface ExternalLinkProps {
 
 export function ExternalLink({ href, children, className, iconSize = 12, ariaLabel }: ExternalLinkProps) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={className} aria-label={ariaLabel}>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+      aria-label={ariaLabel}
+      style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
+    >
       {children}
       <LinkIcon size={iconSize} />
     </a>

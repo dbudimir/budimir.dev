@@ -1,6 +1,7 @@
 import { ExternalLink } from '../shared/external-link';
 import Experience from './experience';
 import Frit from './frit';
+import { HeroName } from './hero-name';
 import { NormCoreSticker } from './sticker';
 import Work from './work';
 
@@ -10,9 +11,7 @@ const Content = () => {
       <Frit />
       <div className="content-container">
         <div className="hero-intro">
-          <div className="hero-name">
-            <h1>david budimir</h1>
-          </div>
+          <HeroName />
 
           <div className="norm-core-sticker-slot">
             <NormCoreSticker />

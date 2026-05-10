@@ -60,7 +60,7 @@ export function StickerBadgeRow() {
         </span>
       </BadgeOuter>
       <BadgeOuter aria-label="Marketing">
-        <BadgeLabel style={{ lineHeight: '.8' }} $fontSize="0.9rem">
+        <BadgeLabel style={{ lineHeight: '.8', transform: 'translateY(2px)' }} $fontSize="0.9rem">
           MK
           <br />
           TG

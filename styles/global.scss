@@ -277,11 +277,12 @@ a {
   align-items: flex-start;
   gap: var(--spacing-xl);
   width: 100%;
-
+  
   @media (min-width: 769px) {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    margin-bottom: var(--spacing-xl);
     gap: 0;
   }
 }

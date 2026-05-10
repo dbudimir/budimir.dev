@@ -3,7 +3,7 @@ import type { Job } from '../types';
 export const jobs: Job[] = [
   {
     company: 'Bilt',
-    role: 'Software Engineer',
+    role: 'Senior Software Engineer',
     location: 'New York, NY',
     dates: '01.2025 – Present',
     desc: 'As a full-stack engineer shipping across web and mobile, I work on complex features and internal tooling to keep our teams moving.',
@@ -21,7 +21,8 @@ export const jobs: Job[] = [
   },
   {
     company: 'Best Egg',
-    role: 'Lead Software Engineer II',
+    role: 'Software Engineer ii',
+    companySubTitle: '(till acq)',
     location: 'Washington, D.C. // Remote',
     dates: '04.2021 – 01.2025',
     desc: 'As a full-stack engineer, I played a role in shaping user-facing products that now serve over ten-thousand new applicants a month and support thousands of monthly active users.',
@@ -84,7 +85,7 @@ export const jobs: Job[] = [
   },
   {
     company: 'CVENT',
-    companySubTitle: '(Social Tables)',
+    companySubTitle: '(social tables acq)',
     role: 'Web Developer & Technical SEO Specialist',
     location: 'Washington, D.C.',
     dates: '01.2016 – 03.2019',

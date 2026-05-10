@@ -8,6 +8,15 @@ import ProjectButton from '../shared/project-button';
 import { TagList } from '../shared/tag-list';
 import SectionContainer from './section.styles';
 
+/** Smaller, muted line next to the company name (e.g. acquisition context). */
+const CompanySubtitle = styled.span`
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0.03em;
+  vertical-align: baseline;
+`;
+
 const ExperienceContainer = styled(SectionContainer)`
   .content .project .project-content {
     .bullets {
@@ -41,7 +50,13 @@ const Experience = () => {
             <ProjectButton
               title={
                 <>
-                  {job.company} {job.companySubTitle}
+                  {job.company}
+                  {job.companySubTitle ? (
+                    <>
+                      {' '}
+                      <CompanySubtitle>{job.companySubTitle}</CompanySubtitle>
+                    </>
+                  ) : null}
                 </>
               }
               description={job.role}
