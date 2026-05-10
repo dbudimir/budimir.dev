@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import HomePage from './page.client';
+import Content from '../components/home/content';
 
 export const metadata: Metadata = {
   title: 'David Budimir',
@@ -14,5 +14,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HomePage />;
+  return (
+    <div className="page-shell">
+      <Content />
+    </div>
+  );
 }

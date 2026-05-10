@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import YouTube from 'react-youtube';
 import styled from 'styled-components';
 import projects from '../../data/projects';
 import { useToggleSet } from '../../lib/hooks/use-toggle-set';
@@ -13,12 +12,6 @@ import SectionContainer from './section.styles';
 
 /** Fixed height matches most project thumbs (242 in data); keeps every slot the same visual size. */
 const THUMB_H = 242;
-
-const YOUTUBE_OPTS = {
-  height: '240',
-  width: '420',
-  playerVars: { autoplay: 0, showinfo: 0 },
-} as const;
 
 const ThumbSlot = styled.div`
   flex-shrink: 0;
@@ -90,7 +83,17 @@ const VideoMedia = ({ video }: VideoMediaProps) => {
         </video>
       );
     case 'youtube':
-      return <YouTube videoId={video.id} className="video" opts={YOUTUBE_OPTS} />;
+      return (
+        <iframe
+          src={`https://www.youtube.com/embed/${video.id}`}
+          title="YouTube video player"
+          width="420"
+          height="240"
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      );
   }
 };
 

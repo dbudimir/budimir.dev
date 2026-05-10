@@ -1,114 +1,32 @@
-'use client';
-
-import styled from 'styled-components';
-import LinkIcon from '../icons/link';
+import { ExternalLink } from '../shared/external-link';
 import Experience from './experience';
 import Frit from './frit';
 import { NormCoreSticker } from './sticker';
 import Work from './work';
 
-const HeroIntro = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--spacing-xl);
-  width: 100%;
-
-  @media (min-width: 769px) {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 0;
-  }
-`;
-
-/** Out of flow on wide layouts so body text aligns to the image width only. */
-const NormCoreStickerSlot = styled.div`
-  flex-shrink: 0;
-
-  @media (min-width: 769px) {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-  }
-`;
-
-const HeroFigure = styled.figure`
-  position: relative;
-  display: inline-block;
-  margin: 0;
-  flex-shrink: 0;
-
-  img {
-    position: relative;
-    z-index: 1;
-    display: block;
-  }
-`;
-
-const HeroName = styled.div`
-  display: none;
-
-  @media (min-width: 769px) {
-    display: block;
-  }
-`;
-
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
-  padding: var(--spacing-md) 0;
-
-  .resume {
-    display: flex;
-    width: max-content;
-    align-items: center;
-    cursor: pointer;
-
-    a {
-      display: flex;
-      text-decoration: none;
-      color: var(--color-black);
-      line-height: 1;
-    }
-
-    &:hover {
-      svg {
-        transform: scale(1.2);
-      }
-    }
-  }
-`;
-
 const Content = () => {
   return (
-    <HeroFigure>
+    <figure className="hero-figure">
       <Frit />
-      <ContentContainer>
-        <HeroIntro>
-          <HeroName>
+      <div className="content-container">
+        <div className="hero-intro">
+          <div className="hero-name">
             <h1>david budimir</h1>
-          </HeroName>
+          </div>
 
-          <NormCoreStickerSlot>
+          <div className="norm-core-sticker-slot">
             <NormCoreSticker />
-          </NormCoreStickerSlot>
-        </HeroIntro>
+          </div>
+        </div>
 
-        <b className="resume">
-          <a href="/static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
-            resume
-            <LinkIcon size={12} style={{ transition: 'var(--transition)' }} />
-          </a>
-        </b>
+        <ExternalLink href="/static/pdfs/david-budimir-resume.pdf" className="resume" ariaLabel="Download resume (PDF)">
+          resume
+        </ExternalLink>
 
         <Experience />
         <Work />
-      </ContentContainer>
-    </HeroFigure>
+      </div>
+    </figure>
   );
 };
 

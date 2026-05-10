@@ -47,19 +47,19 @@ const BadgeLabel = styled.span<{ $fontSize: string }>`
 export function StickerBadgeRow() {
   return (
     <Root>
-      <BadgeOuter>
+      <BadgeOuter aria-label="Software Engineer, 7+ years">
         <BadgeLabel style={{ letterSpacing: 'var(--letter-spacing-tighter)' }} $fontSize="1.0125rem">
           SE7
         </BadgeLabel>
       </BadgeOuter>
-      <BadgeOuter $double>
+      <BadgeOuter $double aria-label="Designer, 8+ years">
         <span>
           <BadgeLabel style={{ letterSpacing: 'var(--letter-spacing-tighter)' }} $fontSize="1.0125rem">
             D8
           </BadgeLabel>
         </span>
       </BadgeOuter>
-      <BadgeOuter>
+      <BadgeOuter aria-label="Marketing">
         <BadgeLabel style={{ lineHeight: '.8' }} $fontSize="0.9rem">
           MK
           <br />

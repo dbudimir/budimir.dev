@@ -207,6 +207,96 @@ a {
 }
 
 // =============================================================================
+// HOME LAYOUT
+// =============================================================================
+
+.page-shell {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  --offset: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-figure {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  flex-shrink: 0;
+
+  img {
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-md) 0;
+
+  .resume {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-black);
+    line-height: 1;
+    font-weight: var(--font-weight-bold);
+
+    svg {
+      transition: var(--transition);
+    }
+
+    &:hover svg {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.hero-intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+  width: 100%;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0;
+  }
+}
+
+/** Out of flow on wide layouts so body text aligns to the image width only. */
+.norm-core-sticker-slot {
+  flex-shrink: 0;
+
+  @media (min-width: 769px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+}
+
+.hero-name {
+  display: none;
+
+  @media (min-width: 769px) {
+    display: block;
+  }
+}
+
+// =============================================================================
 // ANIMATIONS
 // =============================================================================
 
