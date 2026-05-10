@@ -2,15 +2,14 @@
 
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
 import styled from 'styled-components';
+import { stickerSkewCss } from '../../shared/sticker-skew.styles';
 import { StickerBadgeRow } from './badge-row';
 import { StickerIconRow } from './icon-row';
 import { StickerTextStack } from './text-stack';
 
 const StickerPerspective = styled.div`
   display: inline-block;
-  perspective: var(--sticker-perspective, 1000px);
-  perspective-origin: var(--sticker-perspective-origin, 50% 50%);
-  transform: scale(0.95);
+  transform: scale(0.95) translateY(-12px) translateX(-12px);
 `;
 
 const StickerRoot = styled.section`
@@ -21,11 +20,7 @@ const StickerRoot = styled.section`
   color: var(--color-black);
   line-height: 1;
   max-width: min(100%, 26rem);
-  margin-right: 12px;
-  transform-style: preserve-3d;
-  transform-origin: var(--sticker-transform-origin, 50% 50%);
-  transform: translateX(0px) translateY(-12px) rotateX(var(--sticker-rotate-x, 2deg)) rotateY(var(--sticker-rotate-y, 2deg))
-    rotateZ(var(--sticker-rotate-z, 0deg)) skew(var(--sticker-skew-x, 0), var(--sticker-skew-y, -2.5deg));
+  ${stickerSkewCss}
 `;
 
 const StickerBody = styled.div`
