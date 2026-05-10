@@ -2,6 +2,7 @@
 
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
 import styled from 'styled-components';
+import { stickerEdgeBlurCss } from '../../shared/sticker-edge-blur.styles';
 import { stickerSkewCss } from '../../shared/sticker-skew.styles';
 import { StickerBadgeRow } from './badge-row';
 import { StickerIconRow } from './icon-row';
@@ -29,42 +30,11 @@ const StickerBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  opacity: 0.75;
 `;
 
-/**
- * Single layer: `backdrop-filter` + `mask` so blur fades out toward the sticker interior (like black → black → transparent, but `to right`).
- * `--sticker-edge-fade`: strip width from the right. `--sticker-edge-blur-strength`: multiplier on base blur.
- * `--sticker-edge-mask-solid-start`: where the mask reaches full opacity (0–100%, default 55%) so the outer edge can stay “fully blurred”.
- */
 const StickerEdgeBlur = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  width: var(--sticker-edge-fade, 40%);
-  pointer-events: none;
-  overflow: visible;
-
-  -webkit-backdrop-filter: blur(calc(var(--sticker-edge-blur-px, .5px) * var(--sticker-edge-blur-strength, 1)));
-  backdrop-filter: blur(calc(var(--sticker-edge-blur-px, .5px) * var(--sticker-edge-blur-strength, 1)));
-
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) var(--sticker-edge-mask-solid-start, 55%),
-    rgba(0, 0, 0, 1) 100%
-  );
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) var(--sticker-edge-mask-solid-start, 55%),
-    rgba(0, 0, 0, 1) 100%
-  );
-  -webkit-mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
+  ${stickerEdgeBlurCss}
 `;
 
 export type NormCoreStickerProps = ComponentPropsWithoutRef<typeof StickerPerspective> & {

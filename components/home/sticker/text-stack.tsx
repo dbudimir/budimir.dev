@@ -12,11 +12,10 @@ const Root = styled.div`
 `;
 
 const Headline = styled.p`
-  margin: 0;
+  margin: 12px 0;
   font-weight: 800;
   font-size: var(--font-size-2xl);
   letter-spacing: 0.05em;
-  margin: 12px 0;
 
   @media (min-width: 769px) {
     display: none;

@@ -35,9 +35,11 @@ export interface ProjectLink {
   url: string;
 }
 
+export type VideoSource = { kind: 'youtube'; id: string } | { kind: 'mp4'; src: string };
+
 export interface Project {
-  h3: string;
-  videoId: string | null;
+  title: string;
+  video: VideoSource | null;
   images: ProjectImage[];
   description: string[];
   tags: string[];

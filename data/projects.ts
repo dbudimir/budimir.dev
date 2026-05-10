@@ -2,8 +2,8 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
-    h3: 'Squad',
-    videoId: 'squad',
+    title: 'Squad',
+    video: { kind: 'mp4', src: '/static/images/squad-mini-demo.mp4' },
     images: [{ src: '/static/images/squad-website.webp', alt: 'Squad website thumbnail', height: 242, width: 446 }],
     description: [
       'Squad is a full-featured SaaS product that makes it easier for small teams to stay on the same page, week-to-week.',
@@ -16,8 +16,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    h3: 'CUNY Architecture',
-    videoId: null,
+    title: 'CUNY Architecture',
+    video: null,
     images: [
       {
         src: '/static/images/ctarch-desktop.webp',
@@ -40,8 +40,8 @@ export const projects: Project[] = [
     links: [{ linkText: 'ctarch.online', url: 'https://www.ctarch.online/' }],
   },
   {
-    h3: 'Projectr',
-    videoId: null,
+    title: 'Projectr',
+    video: null,
     images: [
       {
         src: '/static/images/projectr-desktop.webp',
@@ -64,8 +64,8 @@ export const projects: Project[] = [
     links: [{ linkText: 'projectr.nyc', url: 'https://projectr.nyc/' }],
   },
   {
-    h3: 'Queen Ballers',
-    videoId: null,
+    title: 'Queen Ballers',
+    video: null,
     images: [
       { src: '/static/images/queen-ballers.webp', alt: 'Queen ballers website thumbnail', height: 242, width: 446 },
       { src: '/static/images/qb-mobile-thumb.webp', alt: 'Queen ballers mobile thumbnail', height: 242, width: 122 },
@@ -78,8 +78,8 @@ export const projects: Project[] = [
     links: [{ linkText: 'queen-ballers.vercel.app', url: 'https://queen-ballers.vercel.app/' }],
   },
   {
-    h3: 'Greywing',
-    videoId: 'greywing',
+    title: 'Greywing',
+    video: { kind: 'mp4', src: '/static/images/grey-wing-ipad-demo.mp4' },
     images: [
       { src: '/static/images/grey-wing-marketing.webp', alt: 'Greywing website thumbnail', height: 242, width: 446 },
     ],
@@ -90,8 +90,8 @@ export const projects: Project[] = [
     links: [{ linkText: 'grey-wing.com', url: 'https://greywing-marketing-caqps9urj-dbudi.vercel.app/' }],
   },
   {
-    h3: 'Vodium',
-    videoId: 'qW8KuYBWwCU',
+    title: 'Vodium',
+    video: { kind: 'youtube', id: 'qW8KuYBWwCU' },
     images: [
       { src: '/static/images/vodium-website.webp', alt: 'Vodium website thumbnail', height: 242, width: 446 },
       { src: '/static/images/vodium.webp', alt: 'Vodium thumbnail', height: 242, width: 446 },
@@ -104,8 +104,8 @@ export const projects: Project[] = [
     links: [{ linkText: 'vodium.us', url: 'https://vodium.us/' }],
   },
   {
-    h3: 'Mealdig',
-    videoId: null,
+    title: 'Mealdig',
+    video: null,
     images: [
       { src: '/static/images/mealdig.webp', alt: 'Mealdig thumbnail', height: 242, width: 446 },
       { src: '/static/images/order-4-thumb.webp', alt: 'Mealdig older thumbnail', height: 242, width: 446 },
@@ -121,8 +121,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    h3: 'EVERFI Training Survey',
-    videoId: null,
+    title: 'EVERFI Training Survey',
+    video: null,
     images: [
       { src: '/static/images/everfi-survey-thumb.webp', alt: 'Everfi survey thumbnail', height: 242, width: 446 },
       {
@@ -140,8 +140,8 @@ export const projects: Project[] = [
     links: [{ linkText: 'view survey', url: 'https://everfi.com/surveys/workplace-training-evaluation/' }],
   },
   {
-    h3: 'NBA Starting Five',
-    videoId: null,
+    title: 'NBA Starting Five',
+    video: null,
     images: [
       { src: '/static/images/starting-five-thumb.webp', alt: 'Nba starting 5 thumbnail', height: 242, width: 446 },
       { src: '/static/images/starting-five-mobile.webp', alt: 'Nba starting 5 mobile', height: 242, width: 122 },
@@ -154,8 +154,8 @@ export const projects: Project[] = [
     links: [{ linkText: 'open repo', url: 'https://github.com/dbudimir/nba-starting-five' }],
   },
   {
-    h3: 'Simon',
-    videoId: null,
+    title: 'Simon',
+    video: null,
     images: [
       { src: '/static/images/simon-thumb.webp', alt: 'Simon thumbnail', height: 242, width: 446 },
       { src: '/static/images/simon-mobile-thumb.webp', alt: 'Simon mobile thumbnail', height: 242, width: 122 },
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     ],
     tags: ['javascript', 'html', 'css'],
     links: [
-      { linkText: 'play simon', url: '../../static/simon/index.html' },
+      { linkText: 'play simon', url: '/static/simon/index.html' },
       { linkText: 'open repo', url: 'https://github.com/dbudimir/simon' },
     ],
   },

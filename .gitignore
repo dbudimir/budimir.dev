@@ -12,6 +12,7 @@
 /.vscode/
 /.next/
 /out/
+tsconfig.tsbuildinfo
 
 # production
 /build

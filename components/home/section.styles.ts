@@ -71,7 +71,7 @@ const SectionContainer = styled.div`
           flex-direction: column;
           gap: var(--spacing-sm);
           flex-wrap: wrap;
-          font-size: 14px;
+          font-size: 12px;
           max-width: 600px;
 
           .links,
@@ -80,7 +80,6 @@ const SectionContainer = styled.div`
             width: max-content;
             gap: 6px;
             flex-wrap: wrap;
-            text-transform: lowercase;
           }
 
           .tags {

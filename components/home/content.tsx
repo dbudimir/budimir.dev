@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import styled from 'styled-components';
 import LinkIcon from '../icons/link';
 import Experience from './experience';
@@ -90,20 +89,9 @@ const Content = () => {
       <Frit />
       <ContentContainer>
         <HeroIntro>
-          {/* <div> */}
-          {/* <Image
-              style={{ marginBottom: '24px' }}
-              src="/static/images/cap.webp"
-              alt="David Budimir"
-              height="45"
-              width="80"
-              priority
-            /> */}
-
           <HeroName>
             <h1>david budimir</h1>
           </HeroName>
-          {/* </div> */}
 
           <NormCoreStickerSlot>
             <NormCoreSticker />
@@ -111,7 +99,7 @@ const Content = () => {
         </HeroIntro>
 
         <b className="resume">
-          <a href="../static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="/static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
             resume
             <LinkIcon style={{ transition: 'var(--transition)', height: 12 }} />
           </a>

@@ -5,13 +5,19 @@ import { useState } from 'react';
 import YouTube from 'react-youtube';
 import styled from 'styled-components';
 import projects from '../../data/projects';
-import type { Project } from '../../types';
+import type { VideoSource } from '../../types';
 import LinkIcon from '../icons/link';
 import ProjectButton from '../shared/project-button';
 import SectionContainer from './section.styles';
 
 /** Fixed height matches most project thumbs (242 in data); keeps every slot the same visual size. */
 const THUMB_H = 242;
+
+const YOUTUBE_OPTS = {
+  height: '240',
+  width: '420',
+  playerVars: { autoplay: 0, showinfo: 0 },
+} as const;
 
 const ThumbSlot = styled.div`
   flex-shrink: 0;
@@ -71,41 +77,20 @@ const WorkContainer = styled(SectionContainer)`
 `;
 
 interface VideoMediaProps {
-  videoId: Project['videoId'];
+  video: VideoSource;
 }
 
-const VideoMedia = ({ videoId }: VideoMediaProps) => {
-  if (videoId === 'squad') {
-    return (
-      <video autoPlay loop muted playsInline preload="auto">
-        <source src="../../static/images/squad-mini-demo.mp4" type="video/mp4" />
-      </video>
-    );
+const VideoMedia = ({ video }: VideoMediaProps) => {
+  switch (video.kind) {
+    case 'mp4':
+      return (
+        <video autoPlay loop muted playsInline preload="none">
+          <source src={video.src} type="video/mp4" />
+        </video>
+      );
+    case 'youtube':
+      return <YouTube videoId={video.id} className="video" opts={YOUTUBE_OPTS} />;
   }
-
-  if (videoId === 'greywing') {
-    return (
-      <video autoPlay loop muted playsInline preload="auto">
-        <source src="../../static/images/grey-wing-ipad-demo.mp4" type="video/mp4" />
-      </video>
-    );
-  }
-
-  if (videoId) {
-    return (
-      <YouTube
-        videoId={videoId}
-        className="video"
-        opts={{
-          height: '240',
-          width: '420',
-          playerVars: { autoplay: 0, showinfo: 0 },
-        }}
-      />
-    );
-  }
-
-  return null;
 };
 
 const Work = () => {
@@ -130,9 +115,9 @@ const Work = () => {
       </div>
       <div className="content">
         {projects.map((project, i) => (
-          <div key={project.h3} className={`project ${openProjects.has(i) ? 'open' : ''}`}>
+          <div key={project.title} className={`project ${openProjects.has(i) ? 'open' : ''}`}>
             <ProjectButton
-              title={project.h3}
+              title={project.title}
               description={project.description[0]}
               isOpen={openProjects.has(i)}
               onClick={() => toggleProject(i)}
@@ -146,9 +131,9 @@ const Work = () => {
               </p>
 
               <div className="image-row">
-                {project.videoId ? (
+                {project.video ? (
                   <ThumbSlot>
-                    <VideoMedia videoId={project.videoId} />
+                    <VideoMedia video={project.video} />
                   </ThumbSlot>
                 ) : null}
                 {project.images.map(image => (

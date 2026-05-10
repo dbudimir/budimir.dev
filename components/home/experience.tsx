@@ -82,6 +82,7 @@ const Experience = () => {
                   <span className="location">{job.location}</span>
                   <span className="dates">{job.dates}</span>
                 </div>
+
                 <div className="links">
                   <div className="link">
                     <a href={job.link.url} target="_blank" rel="noreferrer">
