@@ -67,7 +67,7 @@ const StyledButton = styled.button<{ $isOpen: boolean }>`
     }
 
     ${TitleDescription} {
-      color: gray;
+      color: var(--color-gray);
     }
 
     ${({ $isOpen }) =>

@@ -27,7 +27,7 @@ const IconLink = styled.a`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-black);
+    outline: var(--focus-ring);
     outline-offset: 4px;
     border-radius: 4px;
   }
@@ -45,7 +45,7 @@ const MonogramBlock = styled.div`
 const MonogramText = styled.span`
   font-weight: 800;
   font-size: 1.6875rem;
-  letter-spacing: -0.05em;
+  letter-spacing: var(--letter-spacing-tight);
   line-height: 0.85;
   user-select: none;
 `;

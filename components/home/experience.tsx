@@ -14,7 +14,7 @@ const ExperienceContainer = styled(SectionContainer)`
       margin: 0 0 var(--spacing-sm) 0;
       font-family: var(--font-geist-sans), system-ui, sans-serif;
       font-size: var(--font-size-sm);
-      max-width: 600px;
+      max-width: var(--content-max-width);
       display: flex;
       align-items: flex-start;
       gap: var(--spacing-md);

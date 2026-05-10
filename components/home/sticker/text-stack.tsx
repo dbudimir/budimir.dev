@@ -86,7 +86,7 @@ const EmailButton = styled.button`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-black);
+    outline: var(--focus-ring);
     outline-offset: 3px;
   }
 

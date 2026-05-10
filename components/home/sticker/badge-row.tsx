@@ -48,13 +48,13 @@ export function StickerBadgeRow() {
   return (
     <Root>
       <BadgeOuter>
-        <BadgeLabel style={{ letterSpacing: '-0.08em' }} $fontSize="1.0125rem">
+        <BadgeLabel style={{ letterSpacing: 'var(--letter-spacing-tighter)' }} $fontSize="1.0125rem">
           SE7
         </BadgeLabel>
       </BadgeOuter>
       <BadgeOuter $double>
         <span>
-          <BadgeLabel style={{ letterSpacing: '-0.08em' }} $fontSize="1.0125rem">
+          <BadgeLabel style={{ letterSpacing: 'var(--letter-spacing-tighter)' }} $fontSize="1.0125rem">
             D8
           </BadgeLabel>
         </span>

@@ -26,7 +26,7 @@ const FritWrapper = styled.div`
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  opacity: 0.25;
+  opacity: var(--opacity-faded);
 
   svg {
     display: block;

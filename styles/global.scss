@@ -38,8 +38,6 @@ $typography: (
   font-size-2xl: 1.5rem,
   font-size-3xl: 1.875rem,
   font-weight-normal: 400,
-  font-weight-medium: 500,
-  font-weight-semibold: 600,
   font-weight-bold: 700,
 );
 
@@ -115,9 +113,21 @@ $animation: (
   --font-size-3xl: #{typography(font-size-3xl)};
 
   --font-weight-normal: #{typography(font-weight-normal)};
-  --font-weight-medium: #{typography(font-weight-medium)};
-  --font-weight-semibold: #{typography(font-weight-semibold)};
   --font-weight-bold: #{typography(font-weight-bold)};
+
+  // Layout
+  --content-max-width: 600px;
+
+  // Focus
+  --focus-ring: 2px solid var(--color-black);
+
+  // Letter spacing
+  --letter-spacing-tight: -0.05em;
+  --letter-spacing-tighter: -0.08em;
+
+  // Opacity
+  --opacity-emphasized: 0.75;
+  --opacity-faded: 0.25;
 
   // Spacing
   --spacing-xs: #{spacing(xs)};

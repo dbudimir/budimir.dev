@@ -38,7 +38,7 @@ const SectionContainer = styled.div`
           margin: var(--spacing-md) 0;
           font-family: var(--font-geist-sans), system-ui, sans-serif;
           font-size: var(--font-size-sm);
-          max-width: 600px;
+          max-width: var(--content-max-width);
         }
 
         .stack {
@@ -48,19 +48,19 @@ const SectionContainer = styled.div`
           gap: 6px;
           flex-wrap: wrap;
           font-size: var(--font-size-2xs);
-          max-width: 600px;
+          max-width: var(--content-max-width);
 
           b {
             font-weight: var(--font-weight-normal);
           }
 
           span {
-            border: 1px solid gray;
+            border: 1px solid var(--color-gray);
             padding: 2px 4px;
             font-size: var(--font-size-2xs);
             line-height: 1.2;
             border-radius: 4px;
-            color: gray;
+            color: var(--color-gray);
           }
         }
 
@@ -72,7 +72,7 @@ const SectionContainer = styled.div`
           gap: var(--spacing-sm);
           flex-wrap: wrap;
           font-size: 12px;
-          max-width: 600px;
+          max-width: var(--content-max-width);
 
           .links,
           .tags {
@@ -83,7 +83,7 @@ const SectionContainer = styled.div`
           }
 
           .tags {
-            color: gray;
+            color: var(--color-gray);
           }
 
           .link {
