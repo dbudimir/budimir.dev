@@ -1,13 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
 import YouTube from 'react-youtube';
 import styled from 'styled-components';
 import projects from '../../data/projects';
+import { useToggleSet } from '../../lib/hooks/use-toggle-set';
 import type { VideoSource } from '../../types';
-import LinkIcon from '../icons/link';
+import { ExternalLink } from '../shared/external-link';
 import ProjectButton from '../shared/project-button';
+import { TagList } from '../shared/tag-list';
 import SectionContainer from './section.styles';
 
 /** Fixed height matches most project thumbs (242 in data); keeps every slot the same visual size. */
@@ -94,19 +95,7 @@ const VideoMedia = ({ video }: VideoMediaProps) => {
 };
 
 const Work = () => {
-  const [openProjects, setOpenProjects] = useState<Set<number>>(new Set());
-
-  const toggleProject = (index: number) => {
-    setOpenProjects(prev => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
-      }
-      return next;
-    });
-  };
+  const [openProjects, toggleProject] = useToggleSet<number>();
 
   return (
     <WorkContainer>
@@ -149,21 +138,14 @@ const Work = () => {
                 ))}
               </div>
 
-              <div className="tags stack">
-                {project.tags.map(tag => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
+              <TagList tags={project.tags} />
 
               <div className="tag-row">
                 <div className="links">
                   {project.links.map(link => (
-                    <div className="link" key={link.url}>
-                      <a href={link.url} target="_blank" rel="noreferrer">
-                        {link.linkText}
-                      </a>
-                      <LinkIcon style={{ height: 14 }} />
-                    </div>
+                    <ExternalLink key={link.url} className="link" href={link.url} iconSize={14}>
+                      {link.linkText}
+                    </ExternalLink>
                   ))}
                 </div>
               </div>

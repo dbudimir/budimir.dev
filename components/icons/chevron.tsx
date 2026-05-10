@@ -1,10 +1,14 @@
 import type { SVGProps } from 'react';
 
-export default function Chevron(props: SVGProps<SVGSVGElement>) {
+interface ChevronProps extends Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> {
+  size?: number;
+}
+
+export default function Chevron({ size = 24, ...props }: ChevronProps) {
   return (
     <svg
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import styled from 'styled-components';
-import { CONTACT_EMAIL, CONTACT_EMAIL_COPY_FEEDBACK_MS } from '../../lib/contact';
+import { CONTACT_EMAIL } from '../../lib/contact';
+import { useCopyEmail } from '../../lib/hooks/use-copy-email';
 import CopyIcon from '../icons/copy';
-import LinkIcon from '../icons/link';
+import { ExternalLink } from '../shared/external-link';
 import { sectionContentStackStyles, sectionCoverStyles, sectionItemRowText } from '../shared/section-item.styles';
 
 const InfoContainer = styled.div`
@@ -62,15 +62,7 @@ const InfoContainer = styled.div`
 `;
 
 const Info = () => {
-  const [showCopied, setShowCopied] = useState(false);
-
-  const copyEmail = () => {
-    setShowCopied(true);
-    void navigator.clipboard.writeText(CONTACT_EMAIL);
-    window.setTimeout(() => {
-      setShowCopied(false);
-    }, CONTACT_EMAIL_COPY_FEEDBACK_MS);
-  };
+  const { showCopied, copyEmail } = useCopyEmail();
 
   return (
     <InfoContainer>
@@ -80,24 +72,17 @@ const Info = () => {
 
       <div className="section-items">
         <button type="button" onClick={copyEmail} className="list-row email-row">
-          email <CopyIcon style={{ width: 12 }} />
+          email <CopyIcon size={12} />
           {showCopied && <div className="copied-indicator">copied {CONTACT_EMAIL} </div>}
         </button>
 
-        <a className="list-row" href="https://github.com/dbudimir" target="_blank" rel="noopener noreferrer">
+        <ExternalLink className="list-row" href="https://github.com/dbudimir">
           github
-          <LinkIcon style={{ height: 12, width: 12 }} />
-        </a>
+        </ExternalLink>
 
-        <a
-          className="list-row"
-          href="https://www.linkedin.com/in/davidbudimir/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <ExternalLink className="list-row" href="https://www.linkedin.com/in/davidbudimir/">
           linkedin
-          <LinkIcon style={{ height: 12, width: 12 }} />
-        </a>
+        </ExternalLink>
       </div>
     </InfoContainer>
   );

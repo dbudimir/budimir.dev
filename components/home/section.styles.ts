@@ -87,12 +87,10 @@ const SectionContainer = styled.div`
           }
 
           .link {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-
-            a {
-              text-decoration: none;
-            }
+            text-decoration: none;
+            color: inherit;
           }
         }
       }

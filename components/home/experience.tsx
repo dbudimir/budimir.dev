@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import styled from 'styled-components';
 import { jobs } from '../../data/jobs';
-import LinkIcon from '../icons/link';
+import { useToggleSet } from '../../lib/hooks/use-toggle-set';
+import { ExternalLink } from '../shared/external-link';
 import ProjectButton from '../shared/project-button';
+import { TagList } from '../shared/tag-list';
 import SectionContainer from './section.styles';
 
 const ExperienceContainer = styled(SectionContainer)`
@@ -27,19 +28,7 @@ const ExperienceContainer = styled(SectionContainer)`
 `;
 
 const Experience = () => {
-  const [openJobs, setOpenJobs] = useState<Set<number>>(new Set());
-
-  const toggleJob = (index: number) => {
-    setOpenJobs(prev => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
-      }
-      return next;
-    });
-  };
+  const [openJobs, toggleJob] = useToggleSet<number>();
 
   return (
     <ExperienceContainer>
@@ -69,13 +58,7 @@ const Experience = () => {
                 </p>
               ))}
 
-              {job.tags && job.tags.length > 0 && (
-                <div className="tags stack">
-                  {job.tags.map(tag => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              )}
+              {job.tags && job.tags.length > 0 && <TagList tags={job.tags} />}
 
               <div className="tag-row">
                 <div className="tags">
@@ -84,12 +67,9 @@ const Experience = () => {
                 </div>
 
                 <div className="links">
-                  <div className="link">
-                    <a href={job.link.url} target="_blank" rel="noreferrer">
-                      {job.link.linkText}
-                    </a>
-                    <LinkIcon style={{ height: 14 }} />
-                  </div>
+                  <ExternalLink className="link" href={job.link.url} iconSize={14}>
+                    {job.link.linkText}
+                  </ExternalLink>
                 </div>
               </div>
             </div>

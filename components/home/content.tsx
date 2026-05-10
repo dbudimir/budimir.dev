@@ -101,7 +101,7 @@ const Content = () => {
         <b className="resume">
           <a href="/static/pdfs/david-budimir-resume.pdf" target="_blank" rel="noopener noreferrer">
             resume
-            <LinkIcon style={{ transition: 'var(--transition)', height: 12 }} />
+            <LinkIcon size={12} style={{ transition: 'var(--transition)' }} />
           </a>
         </b>
 

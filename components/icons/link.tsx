@@ -1,10 +1,14 @@
 import type { SVGProps } from 'react';
 
-export default function Link(props: SVGProps<SVGSVGElement>) {
+interface LinkProps extends Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> {
+  size?: number;
+}
+
+export default function Link({ size = 24, ...props }: LinkProps) {
   return (
     <svg
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

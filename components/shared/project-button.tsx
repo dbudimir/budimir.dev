@@ -84,7 +84,7 @@ const ProjectButton = ({ title, description, isOpen, onClick }: ProjectButtonPro
   <StyledButton type="button" onClick={onClick} $isOpen={isOpen}>
     <Title $isOpen={isOpen}>{title}</Title>
     <TitleDescription $isOpen={isOpen}>{description}</TitleDescription>
-    {isOpen && <ChevronIcon style={{ pointerEvents: 'none', height: 16 }} />}
+    {isOpen && <ChevronIcon size={16} style={{ pointerEvents: 'none' }} />}
   </StyledButton>
 );
 

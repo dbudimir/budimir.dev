@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { CONTACT_EMAIL, CONTACT_EMAIL_COPY_FEEDBACK_MS } from '../../../lib/contact';
+import { useCopyEmail } from '../../../lib/hooks/use-copy-email';
 import CopyIcon from '../../icons/copy';
 
 const Root = styled.div`
@@ -140,15 +140,7 @@ const Tagline = styled.p`
 `;
 
 export function StickerTextStack() {
-  const [showCopied, setShowCopied] = useState(false);
-
-  const copyEmail = () => {
-    setShowCopied(true);
-    void navigator.clipboard.writeText(CONTACT_EMAIL);
-    window.setTimeout(() => {
-      setShowCopied(false);
-    }, CONTACT_EMAIL_COPY_FEEDBACK_MS);
-  };
+  const { showCopied, copyEmail } = useCopyEmail();
 
   return (
     <Root>

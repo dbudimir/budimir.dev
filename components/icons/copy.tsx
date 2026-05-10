@@ -1,10 +1,14 @@
 import type { SVGProps } from 'react';
 
-export default function Copy(props: SVGProps<SVGSVGElement>) {
+interface CopyProps extends Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> {
+  size?: number;
+}
+
+export default function Copy({ size = 24, ...props }: CopyProps) {
   return (
     <svg
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
