@@ -158,6 +158,16 @@ $animation: (
   margin: 0;
 }
 
+html {
+  // Hide the scrollbar so it never reserves layout space — content can bleed
+  // to the true viewport edge and there's no shift when overflow appears.
+  scrollbar-width: none; // Firefox
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Edge
+  }
+}
+
 html,
 body {
   max-width: 100vw;

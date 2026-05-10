@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <link rel="stylesheet" href="./style.css" />
+      <title>Simon</title>
+   </head>
+   <body>
+      <div class="header">
+         <h1 class="header-text" id="first">SIMON!</h1>
+         <h1 class="header-text" id="second">SIMON!</h1>
+         <h1 class="header-text" id="third">SIMON!</h1>
+         <h1 class="header-text" id="fourth">SIMON!</h1>
+      </div>
+
+      <div class="game-box image-shadow js-tilt-container">
+         <div class="game-over">
+            <div id="sorry"></div>
+         </div>
+         <div class="square" id="red"></div>
+         <div class="square" id="blue"></div>
+         <div class="square" id="yellow"></div>
+         <div class="square" id="green"></div>
+         <div class="score" id="start">Start</div>
+      </div>
+
+      <div class="light"></div>
+
+      <div class="cats-temp"></div>
+
+      <audio preload="auto" src="./sounds/simonSound1.mp3" id="red-sound"></audio>
+      <audio preload="auto" src="./sounds/simonSound2.mp3" id="blue-sound"></audio>
+      <audio preload="auto" src="./sounds/simonSound4.mp3" id="yellow-sound"></audio>
+      <audio preload="auto" src="./sounds/simonSound3.mp3" id="green-sound"></audio>
+
+      <script src="./main.js"></script>
+   </body>
+</html>

@@ -1,0 +1,302 @@
+body {
+   display: flex;
+   /* justify-content: space-evenly; */
+   align-items: center;
+   flex-direction: column;
+   height: calc(100vh - 40px);
+   padding: 0 1%;
+   background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff8a 100%);
+   position: relative;
+}
+
+#first {
+   color: #6fd956;
+   left: -8px;
+   margin-top: 2px;
+}
+
+#second {
+   color: #ff4942;
+   left: -8px;
+   margin-top: -2px;
+}
+
+#third {
+   color: #fff464;
+   left: -20px;
+}
+
+#fourth {
+   color: #465aff;
+   opacity: 0.8;
+   left: -12px;
+}
+
+h1 {
+   position: absolute;
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+   width: fit-content;
+   width: -moz-fit-content;
+   font-size: calc(18px + 3.8vw);
+   font-family: Verdana, serif;
+   letter-spacing: 6px;
+   top: 32px;
+}
+
+.appear {
+   animation: fade-in-move-down 0.7s;
+}
+
+@keyframes fade-in-move-down {
+   0% {
+      opacity: 0;
+      transform: translateY(-3rem);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+.game-over {
+   position: absolute;
+   display: none;
+   background-color: #ffffff;
+   border-radius: 10px;
+   box-shadow: 0 8px 24px 0 rgba(151, 157, 170, 0.4), inset 0 0 1px 0 #979daa;
+   left: 0;
+   right: 0;
+   margin: auto;
+   top: 50%;
+   width: 460px;
+   max-width: 80%;
+   z-index: 30;
+   transform: translateY(-50%);
+}
+
+#sorry {
+   font-size: 22px;
+   padding: 24px;
+   font-family: Verdana, serif;
+   display: flex;
+   flex-wrap: wrap;
+   line-height: 1.5;
+   text-align: center;
+}
+
+#sorry span:nth-of-type(1) {
+   flex-basis: 100%;
+}
+
+.start-over {
+   display: block;
+   margin: 24px auto 0;
+   width: fit-content;
+   background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+   padding: 8px 12px;
+   text-transform: uppercase;
+   border-radius: 4px;
+   font-weight: bold;
+   letter-spacing: -1px;
+   font-size: 20px;
+   box-sizing: content-box;
+}
+
+.start-over:hover {
+   cursor: pointer;
+}
+
+#real-answer {
+   font-weight: 900;
+   background-color: lightgray;
+   padding: 2px 12px;
+   border-radius: 20px;
+}
+
+.game-box {
+   display: flex;
+   justify-content: space-between;
+   max-width: 100%;
+   max-height: 100%;
+   width: 600px;
+   height: 600px;
+   flex-wrap: wrap;
+   position: relative;
+   margin-top: calc(78px + 4.6vw);
+}
+
+#red {
+   background-color: red;
+   background-size: 200%;
+   background-position: center;
+}
+
+#blue {
+   background-color: blue;
+   background-size: 200%;
+   background-position: center;
+}
+
+#green {
+   background-color: #38cd0b;
+   background-size: 200%;
+   background-position: center;
+}
+
+#yellow {
+   background-color: #fff12d;
+   background-size: 200%;
+   background-position: center;
+}
+
+.square {
+   width: 49%;
+   margin: 0.5%;
+   height: auto;
+   border-radius: 10px;
+   box-shadow: 0 8px 24px 0 rgba(151, 157, 170, 0.4), inset 0 0 1px 0 #979daa;
+   z-index: -1;
+}
+
+.score {
+   position: absolute;
+   height: 100px;
+   width: 100px;
+   border-radius: 100px;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-family: Verdana, serif;
+   font-weight: 900;
+   background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+   text-transform: uppercase;
+   letter-spacing: -2px;
+   font-size: 24px;
+   color: #6d5bdc;
+}
+
+.calc-score {
+   font-size: 42px;
+   padding-top: 12px;
+}
+
+.round {
+   font-size: 16px;
+   border-radius: 4px;
+   padding: 6px;
+   display: inline-block;
+   position: relative;
+   margin-left: 56px;
+   margin-right: 56px;
+   margin-top: 6px;
+   background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+   box-shadow: 0 8px 24px 0 rgba(151, 157, 170, 0.4), inset 0 0 1px 0 #979daa;
+   color: #000000;
+   letter-spacing: -1px;
+}
+
+/* Flash animation on squares */
+.flash {
+   -webkit-animation-name: flash-animation;
+   -webkit-animation-duration: 1s;
+   -webkit-animation-iteration-count: 1;
+   animation-name: flash-animation;
+   animation-duration: 1s;
+   animation-iteration-count: 1;
+   animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+   width: 49%;
+   margin: 0.5%;
+   height: auto;
+   border-radius: 10px;
+   box-shadow: 0 8px 24px 0 rgba(151, 157, 170, 0.4), inset 0 0 1px 0 #979daa;
+   z-index: -1;
+}
+
+@-webkit-keyframes flash-animation {
+   0% {
+      opacity: 0;
+   }
+   17% {
+      opacity: 1;
+   }
+   25% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+@keyframes flash-animation {
+   0% {
+      opacity: 0;
+   }
+   17% {
+      opacity: 1;
+   }
+   25% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+/* Titling gamebox */
+.image-shadow:after {
+   -webkit-transform: scale(0.95) translateY(36px) translateZ(-30px);
+   transform: scale(0.95) translateY(36px) translateZ(-30px);
+   filter: blur(20px);
+   opacity: 0.9;
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   -webkit-transition: filter 0.3s ease;
+   transition: filter 0.3s ease;
+}
+
+.image-shadow {
+   border-radius: 10px;
+   background-size: cover;
+}
+
+.light {
+   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 65%);
+   width: 600px;
+   height: 600px;
+   background-blend-mode: lighten;
+   position: fixed;
+   pointer-events: none;
+}
+
+.js-tilt-container {
+   -webkit-transition: transform 0.1s ease;
+   -webkit-transform: rotateX(0) rotateY(0);
+   -webkit-transform-style: preserve-3d;
+   transition: transform 0.1s ease;
+   transform: rotateX(0) rotateY(0);
+   transform-style: preserve-3d;
+}
+
+.leave {
+   -webkit-transform: rotateX(0) rotateY(0);
+   -webkit-transition-timing-function: cubic-bezier(0.42, 0, 0, 1);
+   -webkit-transition-duration: 1.5s;
+   transform: rotateX(0) rotateY(0);
+   transition-timing-function: cubic-bezier(0.42, 0, 0, 1);
+   transition-duration: 1.5s;
+}
+
+/* Loads cats into the dom so they're ready to go. */
+.cats-temp {
+   display: none;
+}
