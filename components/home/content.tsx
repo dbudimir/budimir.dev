@@ -1,6 +1,7 @@
+import { CopyEmailButton } from '../shared/copy-email-button';
 import { ExternalLink } from '../shared/external-link';
+import { Tagline } from '../shared/tagline';
 import Experience from './experience';
-import Frit from './frit';
 import { HeroName } from './hero-name';
 import { NormCoreSticker } from './sticker';
 import Work from './work';
@@ -8,13 +9,14 @@ import Work from './work';
 const Content = () => {
   return (
     <figure className="hero-figure">
-      <Frit />
+      {/* <Frit /> */}
       <div className="content-container">
         <div className="hero-intro">
-          <HeroName />
+          <div className="hero-lead">
+            <HeroName />
 
-          <div className="norm-core-sticker-slot">
-            <NormCoreSticker />
+            <Tagline>{'SOFTWARE // DESIGN // MKTG'}</Tagline>
+            <CopyEmailButton />
           </div>
         </div>
 
@@ -24,6 +26,10 @@ const Content = () => {
 
         <Experience />
         <Work />
+
+        <div className="norm-core-sticker-slot">
+          <NormCoreSticker />
+        </div>
       </div>
     </figure>
   );

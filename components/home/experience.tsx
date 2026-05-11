@@ -4,9 +4,25 @@ import styled from 'styled-components';
 import { jobs } from '../../data/jobs';
 import { useToggleSet } from '../../lib/hooks/use-toggle-set';
 import { ExternalLink } from '../shared/external-link';
+import { IconArrow } from '../shared/icon-arrow';
 import ProjectButton from '../shared/project-button';
 import { TagList } from '../shared/tag-list';
+import { TagRow } from '../shared/tag-row';
 import SectionContainer from './section.styles';
+
+const ExperienceSection = styled(SectionContainer)`
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  .project-content .description,
+  .project-content .bullets {
+    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  }
+
+  .project-content .tag-row,
+  .project-content .stack {
+    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  }
+`;
 
 /** Smaller, muted line next to the company name (e.g. acquisition context). */
 const CompanySubtitle = styled.span`
@@ -17,30 +33,11 @@ const CompanySubtitle = styled.span`
   vertical-align: baseline;
 `;
 
-const ExperienceContainer = styled(SectionContainer)`
-  .content .project .project-content {
-    .bullets {
-      margin: 0 0 var(--spacing-sm) 0;
-      font-family: var(--font-geist-sans), system-ui, sans-serif;
-      font-size: var(--font-size-sm);
-      max-width: var(--content-max-width);
-      display: flex;
-      align-items: flex-start;
-      gap: var(--spacing-md);
-
-      span {
-        flex-shrink: 0;
-        transform: translateY(2px);
-      }
-    }
-  }
-`;
-
 const Experience = () => {
   const [openJobs, toggleJob] = useToggleSet<number>();
 
   return (
-    <ExperienceContainer>
+    <ExperienceSection>
       <div className="cover">
         <b>experience</b>
       </div>
@@ -60,38 +57,40 @@ const Experience = () => {
                 </>
               }
               description={job.role}
+              isExperience={true}
               isOpen={openJobs.has(i)}
               onClick={() => toggleJob(i)}
             />
 
             <div className="project-content">
+              <div className="job-detail-head">
+                <span className="job-meta-secondary location">{job.location}</span>
+                <span className="job-meta-sep" aria-hidden>
+                  ·
+                </span>
+                <span className="job-meta-secondary dates">{job.dates}</span>
+              </div>
+
               <p className="description">{job.desc}</p>
 
               {job.bullets?.map(bullet => (
                 <p className="bullets" key={bullet}>
-                  <span>→</span> {bullet}
+                  <IconArrow aria-hidden>→</IconArrow> {bullet}
                 </p>
               ))}
 
               {job.tags && job.tags.length > 0 && <TagList tags={job.tags} />}
 
-              <div className="tag-row">
-                <div className="tags">
-                  <span className="location">{job.location}</span>
-                  <span className="dates">{job.dates}</span>
-                </div>
-
-                <div className="links">
-                  <ExternalLink className="link" href={job.link.url} iconSize={14}>
-                    {job.link.linkText}
-                  </ExternalLink>
-                </div>
-              </div>
+              <TagRow>
+                <ExternalLink className="link" href={job.link.url}>
+                  {job.link.linkText}
+                </ExternalLink>
+              </TagRow>
             </div>
           </div>
         ))}
       </div>
-    </ExperienceContainer>
+    </ExperienceSection>
   );
 };
 

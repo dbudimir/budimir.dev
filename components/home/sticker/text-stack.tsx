@@ -1,9 +1,12 @@
 'use client';
 
-import styled, { keyframes } from 'styled-components';
-import { CONTACT_EMAIL, CONTACT_EMAIL_COPY_FEEDBACK_MS } from '../../../lib/contact';
-import { useCopyEmail } from '../../../lib/hooks/use-copy-email';
-import CopyIcon from '../../icons/copy';
+import styled from 'styled-components';
+
+import { GITHUB_PROFILE_URL, LINKEDIN_PROFILE_URL, PROJECTS_URL } from '../../../lib/contact';
+import Star from '../../icons/star';
+import Sun from '../../icons/sun';
+import { IconArrow } from '../../shared/icon-arrow';
+import { Tagline } from '../../shared/tagline';
 
 const Root = styled.div`
   display: flex;
@@ -11,148 +14,98 @@ const Root = styled.div`
   gap: var(--spacing-md);
 `;
 
-const Headline = styled.p`
-  margin: 12px 0;
-  font-weight: 800;
-  font-size: var(--font-size-2xl);
-  letter-spacing: 0.05em;
-
-  @media (min-width: 769px) {
-    display: none;
-  }
+const SocialRow = styled(Tagline)`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65em;
+  font-size: var(--font-size-2xs);
 `;
 
-const copiedTooltip = keyframes`
-  0% {
-    opacity: 0;
-    transform: translate(calc(-100% + 8px), -50%);
-  }
-  12% {
-    opacity: 1;
-    transform: translate(calc(-100% - 6px), -50%);
-  }
-  78% {
-    opacity: 1;
-    transform: translate(calc(-100% - 6px), -50%);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(calc(-100% - 22px), -50%);
-  }
-`;
-
-const copiedTooltipMobile = keyframes`
-  0% {
-    opacity: 0;
-    transform: translate(26px, -50%);
-  }
-  12% {
-    opacity: 1;
-    transform: translate(8px, -50%);
-  }
-  78% {
-    opacity: 1;
-    transform: translate(8px, -50%);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(34px, -50%);
-  }
-`;
-
-const EmailButton = styled.button`
-  position: relative;
-  display: inline-flex;
-  align-items: baseline;
-  flex-direction: row;
-  gap: 0.5rem;
-  margin: 0;
-  max-width: 100%;
-  padding: 0;
-  font-family: inherit;
-  font-weight: 700;
-  font-size: var(--font-size-sm);
-  letter-spacing: 0.05em;
+const SocialLink = styled.a`
   color: inherit;
-  text-align: left;
   text-decoration: none;
-  cursor: pointer;
-  background: none;
-  border: none;
 
   &:hover {
     text-decoration: underline;
-    text-underline-offset: 3px;
   }
 
   &:focus-visible {
     outline: var(--focus-ring);
     outline-offset: 3px;
-  }
-
-  .copy-hint {
-    flex-shrink: 0;
-    line-height: 0;
-    opacity: 0;
-    pointer-events: none;
-    color: inherit;
-
-    svg {
-      display: block;
-      width: 11px;
-      height: 11px;
-    }
-  }
-
-  &:hover .copy-hint,
-  &:focus-visible .copy-hint {
-    opacity: 1;
-  }
-
-  .copied-indicator {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    white-space: nowrap;
-    pointer-events: none;
-    color: var(--color-text-muted);
-    font-size: var(--font-size-2xs);
-    animation: ${copiedTooltip} ${CONTACT_EMAIL_COPY_FEEDBACK_MS}ms
-      cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  }
-
-  @media (max-width: 768px) {
-    .copied-indicator {
-      left: 100%;
-      top: 50%;
-      animation: ${copiedTooltipMobile} ${CONTACT_EMAIL_COPY_FEEDBACK_MS}ms
-        cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-    }
+    border-radius: 2px;
   }
 `;
 
-const Tagline = styled.p`
+const SocialSep = styled.span`
+  opacity: 0.45;
+  user-select: none;
+`;
+
+const NameRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  margin: auto;
+  font-size: var(--font-size-2xs);
+`;
+
+const NameTagline = styled(Tagline)`
   margin: 0;
-  font-weight: 400;
-  font-size: var(--font-size-xs);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: inherit;
+`;
+
+const NameIconTrail = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
+  opacity: 0.88;
+`;
+
+/** Superscript degree mark after lat/lng (WGS 84), 371 Edgecombe Ave, New York, NY 10031 */
+const DegreeSup = styled.sup`
+  font-size: 1em;
+  line-height: 0;
+  position: relative;
+  top: 0.25em;
+  margin-left: 0.02em;
 `;
 
 export function StickerTextStack() {
-  const { showCopied, copyEmail } = useCopyEmail();
-
   return (
     <Root>
-      <Headline>david budimir</Headline>
-      <EmailButton type="button" onClick={copyEmail}>
-        <span className="copy-hint" aria-hidden={true}>
-          <CopyIcon />
-        </span>
-        {CONTACT_EMAIL}
-        {showCopied ? <span className="copied-indicator">Copied!</span> : null}
-      </EmailButton>
-      <Tagline>{'SOFTWARE // DESIGN // MKTG'}</Tagline>
+      <NameRow>
+        <NameTagline aria-label="Coordinates for 371 Edgecombe Avenue, New York, NY 10031">давид будимир</NameTagline>
+        <NameIconTrail aria-hidden>
+          <Sun size={12} />
+          <IconArrow>→</IconArrow>
+          <Star size={12} />
+        </NameIconTrail>
+      </NameRow>
+      <Tagline
+        style={{ fontSize: 'var(--font-size-2xs)', margin: 'auto' }}
+        aria-label="Coordinates 40.8279599 degrees north, 73.9409963 degrees west"
+      >
+        40.8279599
+        <DegreeSup aria-hidden>°</DegreeSup>, -73.9409963
+        <DegreeSup aria-hidden>°</DegreeSup>
+      </Tagline>
+
+      <SocialRow>
+        <SocialLink href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+          github
+        </SocialLink>
+        <SocialSep aria-hidden>·</SocialSep>
+        <SocialLink href={LINKEDIN_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+          linkedin
+        </SocialLink>
+        <SocialSep aria-hidden>·</SocialSep>
+        <SocialLink href={PROJECTS_URL} target="_blank" rel="noopener noreferrer">
+          77 projects
+        </SocialLink>
+      </SocialRow>
     </Root>
   );
 }

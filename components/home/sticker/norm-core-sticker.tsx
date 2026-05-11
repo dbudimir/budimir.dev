@@ -1,16 +1,14 @@
 'use client';
 
-import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
-import { stickerEdgeBlurCss } from '../../shared/sticker-edge-blur.styles';
-import { stickerSkewCss } from '../../shared/sticker-skew.styles';
+import Hat from '../../icons/hat';
 import { StickerBadgeRow } from './badge-row';
-import { StickerIconRow } from './icon-row';
 import { StickerTextStack } from './text-stack';
 
 const StickerPerspective = styled.div`
   display: inline-block;
-  transform: scale(0.95) translateY(-12px) translateX(-12px);
+  transform: scale(0.95);
 `;
 
 const StickerRoot = styled.section`
@@ -21,7 +19,19 @@ const StickerRoot = styled.section`
   color: var(--color-black);
   line-height: 1;
   max-width: min(100%, 26rem);
-  ${stickerSkewCss}
+`;
+
+const StickerHat = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: var(--color-black);
+
+  svg {
+    display: block;
+    height: 1.6rem;
+    width: auto;
+  }
 `;
 
 const StickerBody = styled.div`
@@ -32,62 +42,19 @@ const StickerBody = styled.div`
   gap: var(--spacing-md);
 `;
 
-const StickerEdgeBlur = styled.div`
-  ${stickerEdgeBlurCss}
-`;
+export type NormCoreStickerProps = ComponentPropsWithoutRef<typeof StickerPerspective>;
 
-export type NormCoreStickerProps = ComponentPropsWithoutRef<typeof StickerPerspective> & {
-  /**
-   * When false, edge blur layers are not rendered.
-   * @default true
-   */
-  edgeBlur?: boolean;
-  /**
-   * Width of the fade zone from the sticker’s right edge (CSS value).
-   * Sets `--sticker-edge-fade`. Examples: `32%`, `min(7rem, 45%)`.
-   * @default (via CSS) 38%
-   */
-  edgeFade?: string;
-  /**
-   * Unitless multiplier on `--sticker-edge-blur-px` (default 8px).
-   * Sets `--sticker-edge-blur-strength`.
-   * @default 1
-   */
-  edgeBlurStrength?: number;
-  /** Base blur radius in px before strength. Sets `--sticker-edge-blur-px`. @default 8 */
-  edgeBlurPx?: number;
-  /**
-   * Where the mask reaches full black along the strip (0% = inner edge, 100% = outer).
-   * Sets `--sticker-edge-mask-solid-start`. Example: `"70%"` for a longer soft ramp, `"100%"` for a linear fade with no flat zone.
-   */
-  edgeMaskSolidStart?: string;
-};
-
-export function NormCoreSticker({
-  style,
-  edgeBlur = true,
-  edgeFade,
-  edgeBlurStrength,
-  edgeBlurPx,
-  edgeMaskSolidStart,
-  ...props
-}: NormCoreStickerProps) {
-  const vars: CSSProperties = {
-    ...(edgeFade != null ? { ['--sticker-edge-fade' as string]: edgeFade } : {}),
-    ...(edgeBlurStrength != null ? { ['--sticker-edge-blur-strength' as string]: edgeBlurStrength } : {}),
-    ...(edgeBlurPx != null ? { ['--sticker-edge-blur-px' as string]: `${edgeBlurPx}px` } : {}),
-    ...(edgeMaskSolidStart != null ? { ['--sticker-edge-mask-solid-start' as string]: edgeMaskSolidStart } : {}),
-  };
-
+export function NormCoreSticker({ ...props }: NormCoreStickerProps) {
   return (
-    <StickerPerspective style={{ ...vars, ...style }} {...props}>
+    <StickerPerspective {...props}>
       <StickerRoot aria-label="David Budimir — intro">
         <StickerBody>
+          <StickerHat aria-hidden>
+            <Hat />
+          </StickerHat>
           <StickerTextStack />
           <StickerBadgeRow />
-          <StickerIconRow />
         </StickerBody>
-        {edgeBlur ? <StickerEdgeBlur aria-hidden /> : null}
       </StickerRoot>
     </StickerPerspective>
   );

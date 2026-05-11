@@ -8,6 +8,7 @@ import type { VideoSource } from '../../types';
 import { ExternalLink } from '../shared/external-link';
 import ProjectButton from '../shared/project-button';
 import { TagList } from '../shared/tag-list';
+import { TagRow } from '../shared/tag-row';
 import SectionContainer from './section.styles';
 
 /** Fixed height matches most project thumbs (242 in data); keeps every slot the same visual size. */
@@ -49,27 +50,6 @@ const ThumbSlot = styled.div`
   }
 `;
 
-const WorkContainer = styled(SectionContainer)`
-  .content .project .project-content {
-    .image-row {
-      width: 100%;
-      display: flex;
-      align-items: stretch;
-      gap: 6px;
-      overflow-x: auto;
-      margin: var(--spacing-xl) 0 0 0;
-      padding-bottom: var(--spacing-md);
-      padding-left: 10px;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE/Edge */
-
-      &::-webkit-scrollbar {
-        display: none; /* Chrome/Safari/Opera */
-      }
-    }
-  }
-`;
-
 interface VideoMediaProps {
   video: VideoSource;
 }
@@ -101,7 +81,7 @@ const Work = () => {
   const [openProjects, toggleProject] = useToggleSet<number>();
 
   return (
-    <WorkContainer>
+    <SectionContainer>
       <div className="cover">
         <b>work samples</b>
       </div>
@@ -111,8 +91,9 @@ const Work = () => {
             <ProjectButton
               title={project.title}
               description={project.description[0]}
-              isOpen={openProjects.has(i)}
               onClick={() => toggleProject(i)}
+              isExperience={false}
+              isOpen={openProjects.has(i)}
             />
 
             <div className="project-content">
@@ -143,20 +124,18 @@ const Work = () => {
 
               <TagList tags={project.tags} />
 
-              <div className="tag-row">
-                <div className="links">
-                  {project.links.map(link => (
-                    <ExternalLink key={link.url} className="link" href={link.url} iconSize={14}>
-                      {link.linkText}
-                    </ExternalLink>
-                  ))}
-                </div>
-              </div>
+              <TagRow>
+                {project.links.map(link => (
+                  <ExternalLink key={link.url} className="link" href={link.url}>
+                    {link.linkText}
+                  </ExternalLink>
+                ))}
+              </TagRow>
             </div>
           </div>
         ))}
       </div>
-    </WorkContainer>
+    </SectionContainer>
   );
 };
 

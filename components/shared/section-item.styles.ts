@@ -11,6 +11,13 @@ export const sectionCoverStyles = css`
   line-height: 1;
 `;
 
+/** Shared body copy inside accordion `.project-content` (description lines, job bullets). */
+export const projectContentBodyText = css`
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  max-width: var(--content-max-width);
+`;
+
 /** Vertical rhythm between rows inside a section’s item list (`.content` or contact links). */
 export const sectionContentStackStyles = css`
   display: flex;

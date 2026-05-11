@@ -23,7 +23,7 @@ export const jobs: Job[] = [
     company: 'Best Egg',
     role: 'Software Engineer ii',
     companySubTitle: '(till acq)',
-    location: 'Washington, D.C. // Remote',
+    location: 'Washington, D.C. | Remote',
     dates: '04.2021 – 01.2025',
     desc: 'As a full-stack engineer, I played a role in shaping user-facing products that now serve over ten-thousand new applicants a month and support thousands of monthly active users.',
     bullets: [
@@ -86,7 +86,7 @@ export const jobs: Job[] = [
   {
     company: 'CVENT',
     companySubTitle: '(social tables acq)',
-    role: 'Web Developer & Technical SEO Specialist',
+    role: 'Web Developer mktg',
     location: 'Washington, D.C.',
     dates: '01.2016 – 03.2019',
     desc: 'Worked my way through the marketing stack. From content marketing to graphic design and asset creation, marketing automation, technical SEO, and web development.',
