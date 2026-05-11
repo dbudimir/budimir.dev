@@ -1,16 +1,9 @@
 import { GoogleTagManager } from '@next/third-parties/google';
+import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
 import StyledComponentsRegistry from '../lib/registry';
 import '../styles/global.scss';
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700', '800'],
-  display: 'swap',
-  variable: '--font-jetbrains-mono',
-});
 
 export const metadata: Metadata = {
   icons: {
@@ -23,11 +16,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <GoogleTagManager gtmId="GTM-5KZP39S" />
       <body>
         <StyledComponentsRegistry>
-          <div className={jetbrainsMono.className}>{children}</div>
+          <div className={GeistMono.className}>{children}</div>
         </StyledComponentsRegistry>
       </body>
     </html>

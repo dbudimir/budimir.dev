@@ -11,16 +11,16 @@ import { TagRow } from '../shared/tag-row';
 import SectionContainer from './section.styles';
 
 const ExperienceSection = styled(SectionContainer)`
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
 
   .project-content .description,
   .project-content .bullets {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
   }
 
   .project-content .tag-row,
   .project-content .stack {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
   }
 `;
 
