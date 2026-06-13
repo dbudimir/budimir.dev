@@ -23,7 +23,7 @@ const StickerRoot = styled.section`
 
 const StickerHat = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   color: var(--color-black);
 

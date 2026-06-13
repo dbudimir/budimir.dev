@@ -46,9 +46,8 @@ const NameRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.45em;
-  margin: auto;
   font-size: var(--font-size-2xs);
 `;
 
@@ -85,7 +84,7 @@ export function StickerTextStack() {
         </NameIconTrail>
       </NameRow>
       <Tagline
-        style={{ fontSize: 'var(--font-size-2xs)', margin: 'auto' }}
+        style={{ fontSize: 'var(--font-size-2xs)' }}
         aria-label="Coordinates 40.8279599 degrees north, 73.9409963 degrees west"
       >
         40.8279599

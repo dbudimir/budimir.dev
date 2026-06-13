@@ -300,7 +300,7 @@ a {
 .norm-core-sticker-slot {
   display: flex;
   flex-shrink: 0;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   margin-top: auto;
   padding-block: var(--spacing-2xl) var(--spacing-xl);
