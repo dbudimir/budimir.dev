@@ -2,6 +2,57 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    title: 'Loading Screenz',
+    video: null,
+    images: [
+      {
+        src: '/static/images/loading-screenz-desktop.webp',
+        alt: 'Loading Screenz website thumbnail',
+        height: 484,
+        width: 860,
+      },
+      {
+        src: '/static/images/loading-screenz-mobile-thumb.webp',
+        alt: 'Loading Screenz mobile thumbnail',
+        height: 484,
+        width: 224,
+      },
+      {
+        src: '/static/images/loading-screenz-popup.webp',
+        alt: 'Loading Screenz extension popup controls',
+        height: 484,
+        width: 384,
+      },
+      {
+        src: '/static/images/loading-screenz-store-1-loading-screen.webp',
+        alt: 'Chrome Web Store screenshot: a loading screen playing over a page',
+        height: 484,
+        width: 774,
+      },
+      {
+        src: '/static/images/loading-screenz-store-2-popup.webp',
+        alt: 'Chrome Web Store screenshot: the toolbar popup',
+        height: 484,
+        width: 774,
+      },
+      {
+        src: '/static/images/loading-screenz-store-3-lineup.webp',
+        alt: 'Chrome Web Store screenshot: the built-in loading screens',
+        height: 484,
+        width: 774,
+      },
+    ],
+    description: [
+      'Loading Screenz is a Chrome extension that turns link clicks into classic video game loading screens and console startups: Halo, PlayStation 2, Xbox, GameCube, and more.',
+      'Built on Manifest V3 with React and TypeScript, it bundles AV1-encoded clips, keeps a local IndexedDB library for your own videos, and uses a Y2K design system modeled on the original Xbox website. The companion marketing site is a Next.js app on Vercel.',
+    ],
+    tags: ['chrome extension', 'react', 'typescript', 'next.js', 'ffmpeg', 'design system'],
+    links: [
+      { linkText: 'loadingscreenz.com', url: 'https://www.loadingscreenz.com/' },
+      { linkText: 'open repo', url: 'https://github.com/dbudimir/loading-screenz' },
+    ],
+  },
+  {
     title: 'Squad',
     video: { kind: 'mp4', src: '/static/images/squad-mini-demo.mp4' },
     images: [{ src: '/static/images/squad-website.webp', alt: 'Squad website thumbnail', height: 242, width: 446 }],
